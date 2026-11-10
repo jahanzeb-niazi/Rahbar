@@ -62,3 +62,4 @@ class AskResponse(BaseModel):
     confidence: Literal["high", "medium", "low"]
     retrieved: list[RetrievedRef]
     provider: str
+    cached: bool = False     # served from the semantic cache (ADR 0003); the UI shows a chip

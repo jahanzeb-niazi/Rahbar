@@ -42,5 +42,14 @@ _PASSAGES = [
 class StubRetriever:
     name = "stub"
 
-    def retrieve(self, question: str, k: int) -> list[Passage]:
+    def embed(self, question: str) -> list[float] | None:
+        return None
+
+    def generation(self) -> str:
+        return "stub"
+
+    def retrieve(self, question: str, k: int, vector: list[float] | None = None) -> list[Passage]:
         return [p.model_copy() for p in _PASSAGES[:k]]
+
+    def check(self) -> dict[str, str]:
+        return {"retriever": "ok"}
