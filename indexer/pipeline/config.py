@@ -16,6 +16,7 @@ class IndexerSettings:
     chunk_size: int
     chunk_overlap: int
     ollama_url: str
+    fetch_corpus: bool = False   # FETCH_CORPUS: download + SHA-verify into corpus_dir first
 
 
 def get_settings() -> IndexerSettings:
@@ -28,4 +29,5 @@ def get_settings() -> IndexerSettings:
         chunk_size=int(os.environ.get("CHUNK_SIZE", 400)),
         chunk_overlap=int(os.environ.get("CHUNK_OVERLAP", 50)),
         ollama_url=os.environ.get("OLLAMA_URL", "http://host.minikube.internal:11434"),
+        fetch_corpus=os.environ.get("FETCH_CORPUS", "false").lower() == "true",
     )

@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -63,8 +64,23 @@ def discover(corpus_dir: str) -> list[tuple[Path, str, bool]]:
     return found
 
 
+def fetch_corpus(settings: IndexerSettings) -> None:
+    """Download the corpus into CORPUS_DIR with corpus/fetch.py --frozen, which fails unless
+    every file matches the SHA-256 in the committed corpus/MANIFEST.md (docs/PIPELINE.md)."""
+    here = Path(__file__).resolve().parent
+    script = next((p for p in (here.parent / "corpus" / "fetch.py",
+                               here.parents[1] / "corpus" / "fetch.py") if p.exists()), None)
+    if script is None:
+        raise SystemExit("FETCH_CORPUS=true but corpus/fetch.py is not in the image")
+    log("fetching corpus", into=settings.corpus_dir)
+    result = subprocess.run([sys.executable, str(script), "--frozen", "--raw",
+                             settings.corpus_dir], check=False)
+    if result.returncode != 0:
+        raise SystemExit(f"corpus fetch or checksum verification failed ({result.returncode})")
+
+
 def run_pipeline(settings: IndexerSettings) -> int:
-    from .chunk import chunk
+    from .chunk import chunk, estimate_tokens
     from .clean import clean
     from .embed import embed
     from .extract import extract
@@ -74,12 +90,24 @@ def run_pipeline(settings: IndexerSettings) -> int:
     if not documents:
         raise SystemExit(f"no documents found in {settings.corpus_dir}")
     all_chunks: list[Chunk] = []
+    original_tokens = 0
     for path, doc_version, superseded in documents:
-        doc = clean(extract(str(path), doc_version, superseded))
+        raw = extract(str(path), doc_version, superseded)
+        doc = clean(raw)
+        original_tokens += sum(estimate_tokens(p.text) for p in doc.pages)
         pieces = chunk(doc, settings.chunk_size, settings.chunk_overlap)
-        log("chunked", source=path.name, chunks=len(pieces))
+        log("chunked", source=path.name, pages=len(doc.pages),
+            ocr_pages=sum(1 for p in raw.pages if p.ocr),
+            empty_pages=sum(1 for p in doc.pages if not p.text.strip()),
+            doc_version=doc_version, superseded=superseded, chunks=len(pieces))
         all_chunks.extend(pieces)
+    stored_tokens = sum(estimate_tokens(c.text) for c in all_chunks)
+    log("chunking summary", chunk_size=settings.chunk_size, chunk_overlap=settings.chunk_overlap,
+        chunks=len(all_chunks), original_tokens=original_tokens, stored_tokens=stored_tokens,
+        storage_amplification=round(stored_tokens / max(original_tokens, 1), 3))
     vectors = embed([c.text for c in all_chunks], settings)
+    log("embedded", chunks=len(vectors), dimension=len(vectors[0]) if vectors else 0,
+        embed_model=settings.embed_model)
     return store(all_chunks, vectors, settings)
 
 
@@ -93,6 +121,8 @@ def main() -> int:
         pod=os.environ.get("HOSTNAME", "-"))
     started = time.perf_counter()
     try:
+        if settings.fetch_corpus and not args.dummy:
+            fetch_corpus(settings)
         if args.dummy:
             from .dummy import write_dummy_index
             from .store import get_client

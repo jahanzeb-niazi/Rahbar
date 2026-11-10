@@ -5,6 +5,8 @@
     python corpus/fetch.py --force               # download everything again
     python corpus/fetch.py --verify              # re-hash local files against MANIFEST.md
     python corpus/fetch.py --list URL            # list the documents linked from an index page
+    python corpus/fetch.py --frozen --raw DIR    # the indexer Job: download into DIR, then fail
+                                                 # unless every file matches MANIFEST.md
 
 Writes:
     corpus/raw/<file>         the documents (gitignored: never commit someone else's PDFs)
@@ -92,7 +94,9 @@ def load_sources() -> list[dict]:
     return docs
 
 
-def fetch(force: bool) -> int:
+def fetch(force: bool, frozen: bool = False) -> int:
+    """Download what is missing. frozen=True (the indexer Job) never rewrites
+    MANIFEST.md: the committed manifest is the contract the downloads are checked against."""
     docs = load_sources()
     RAW.mkdir(exist_ok=True)
     index_path = RAW / "_index.json"
@@ -135,6 +139,9 @@ def fetch(force: bool) -> int:
             time.sleep(PAUSE_SECONDS)
 
     index_path.write_text(json.dumps(entries, indent=2), encoding="utf-8")
+    if frozen:
+        print(f"\n{len(entries)} documents in {RAW}; checking them against corpus/MANIFEST.md")
+        return 1 if failures else verify()
     write_manifest(entries)
     print(f"\n{len(entries)} documents in corpus/raw, manifest written to corpus/MANIFEST.md")
     if failures:
@@ -229,7 +236,15 @@ def main() -> int:
     group.add_argument("--force", action="store_true", help="download everything again")
     group.add_argument("--verify", action="store_true", help="check local files against MANIFEST.md")
     group.add_argument("--list", metavar="URL", help="list document links on an index page")
+    group.add_argument("--frozen", action="store_true",
+                       help="download, then verify against MANIFEST.md without rewriting it")
+    parser.add_argument("--raw", type=Path, help="download directory (default corpus/raw)")
     args = parser.parse_args()
+    if args.raw:
+        global RAW
+        RAW = args.raw
+    if args.frozen:
+        return fetch(force=False, frozen=True)
     if args.verify:
         return verify()
     if args.list:
