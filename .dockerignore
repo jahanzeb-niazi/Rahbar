@@ -1,0 +1,22 @@
+# Applies to builds whose context is the repository root (the indexer image).
+.git
+.github
+__pycache__
+**/__pycache__
+*.pyc
+.pytest_cache
+**/.pytest_cache
+.mypy_cache
+**/.mypy_cache
+.ruff_cache
+**/.ruff_cache
+.venv
+venv
+corpus/raw
+docs
+k8s
+api
+ui
+indexer/tests
+.env
+*secret*

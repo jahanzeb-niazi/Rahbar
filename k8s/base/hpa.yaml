@@ -1,0 +1,22 @@
+# CPU-based autoscaling for the api, 3 to 8 replicas. Utilisation is usage / requests.cpu,
+# which is why every api container sets requests (section 4.5). What this signal misses for
+# an I/O-bound generation service is discussed in docs/ENGINEERING-NOTES.md, question 3.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: api
+  namespace: rahbar
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api
+  minReplicas: 3
+  maxReplicas: 8
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70

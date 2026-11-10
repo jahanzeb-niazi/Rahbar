@@ -1,0 +1,20 @@
+# api and indexer may reach Ollama on the laptop (ollama-host mode) and nothing else there.
+# The address is the one host.minikube.internal resolves to inside minikube; check yours:
+#   minikube ssh "grep host.minikube.internal /etc/hosts"
+# and change the cidr below if it differs.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ollama-egress
+  namespace: rahbar
+spec:
+  podSelector:
+    matchExpressions:
+      - {key: app, operator: In, values: ["api", "indexer"]}
+  policyTypes: ["Egress"]
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 192.168.65.254/32
+      ports:
+        - {protocol: TCP, port: 11434}

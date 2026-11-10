@@ -1,0 +1,20 @@
+# What cd.yml deploys: images from Docker Hub, tagged with the commit SHA, never :latest.
+# cd.yml pins them on every run with:
+#   kustomize edit set image rahbar-api=docker.io/<user>/rahbar-api:${{ github.sha }} ...
+# The values below are placeholders until then; `kubectl get deploy api -o
+# jsonpath='{..image}'` on a deployed cluster always answers "what is running?" with a SHA.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - networkpolicy-ollama.yaml
+images:
+  - name: rahbar-api
+    newName: docker.io/DOCKERHUB_USERNAME/rahbar-api
+    newTag: set-by-cd
+  - name: rahbar-indexer
+    newName: docker.io/DOCKERHUB_USERNAME/rahbar-indexer
+    newTag: set-by-cd
+  - name: rahbar-ui
+    newName: docker.io/DOCKERHUB_USERNAME/rahbar-ui
+    newTag: set-by-cd

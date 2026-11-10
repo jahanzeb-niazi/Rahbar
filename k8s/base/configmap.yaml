@@ -1,0 +1,48 @@
+# One ConfigMap, read by both the api and the indexer (section 4.1). EMBED_MODEL is the
+# embedding pin: the indexer records it in the collection metadata and the api refuses
+# readiness when its own value differs (section 4.4).
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rahbar-config
+  namespace: rahbar
+data:
+  # --- implementations
+  RETRIEVER: "chroma"
+  LLM_PROVIDER: "ollama-host"          # Ollama on the laptop, reached at host.minikube.internal
+  LLM_MODEL: "llama3.2:3b"
+  OLLAMA_URL: "http://host.minikube.internal:11434"
+  LLM_TIMEOUT_SECONDS: "140"           # x2 attempts stays under the Ingress 300 s timeout
+
+  # --- the embedding pin (api and indexer)
+  EMBED_MODEL: "nomic-embed-text"
+
+  # --- vector store and cache
+  CHROMA_HOST: "chroma"
+  CHROMA_PORT: "8000"
+  CHROMA_COLLECTION: "rahbar"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+
+  # --- chunking (indexer), in approximate tokens: words x 1.3. Chosen by recall@5 over
+  # three measured settings; the table is in docs/PIPELINE.md.
+  CHUNK_SIZE: "200"
+  CHUNK_OVERLAP: "25"
+
+  # --- retrieval and grounding (api)
+  TOP_K: "5"
+  # Safety net, not the main abstention mechanism (docs/PIPELINE.md): every relevant passage in
+  # the golden set scored >= 0.6929; the hostel question a02 topped out at 0.6471. Passages below
+  # the floor are dropped from the prompt; if none is left the API abstains without calling the LLM.
+  RELEVANCE_FLOOR: "0.65"
+  # lowest of 0.90/0.93/0.95/0.97 with zero false hits (docs/evidence/cache-threshold-experiment.txt)
+  CACHE_THRESHOLD: "0.95"
+  # 0.1: facts and JSON want near-deterministic decoding; not 0, to leave the model room to
+  # recover from a malformed first token on the retry. Temperature does not fix hallucination.
+  TEMPERATURE: "0.1"
+
+  # --- corpus (indexer): download into CORPUS_DIR and verify against corpus/MANIFEST.md
+  FETCH_CORPUS: "true"
+  CORPUS_DIR: "/corpus/raw"
+
+  LOG_LEVEL: "INFO"
