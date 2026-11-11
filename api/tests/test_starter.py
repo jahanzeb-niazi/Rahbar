@@ -9,15 +9,7 @@ from __future__ import annotations
 import pytest
 from fastapi.testclient import TestClient
 
-
-@pytest.fixture()
-def client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
-    monkeypatch.setenv("RETRIEVER", "stub")
-    monkeypatch.setenv("LLM_PROVIDER", "stub")
-    from app.main import app
-
-    with TestClient(app) as c:
-        yield c
+# the `client` fixture (stub retriever, stub provider, no Redis) lives in conftest.py
 
 
 def test_liveness_answers_without_dependencies(client: TestClient) -> None:

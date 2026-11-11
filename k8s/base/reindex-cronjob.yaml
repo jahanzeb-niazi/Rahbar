@@ -1,0 +1,66 @@
+# Weekly re-index: the same image, command and settings as the indexer Job. It is also the
+# template for an on-demand re-index (make index):
+#   kubectl create job --from=cronjob/reindex manual-reindex-1 -n rahbar
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: reindex
+  namespace: rahbar
+  labels:
+    app: indexer
+spec:
+  schedule: "0 3 * * 0"            # Sundays 03:00
+  concurrencyPolicy: Forbid        # never two writers at once
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 2
+  jobTemplate:
+    spec:
+      backoffLimit: 3
+      activeDeadlineSeconds: 3600
+      ttlSecondsAfterFinished: 86400
+      template:
+        metadata:
+          labels:
+            app: indexer
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: indexer
+          enableServiceLinks: false
+          automountServiceAccountToken: false
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            seccompProfile:
+              type: RuntimeDefault
+          containers:
+            - name: indexer
+              image: rahbar-indexer:dev
+              imagePullPolicy: IfNotPresent
+              command: ["python", "-m", "pipeline.run"]
+              envFrom:
+                - configMapRef:
+                    name: rahbar-config
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop:
+                    - ALL
+              resources:
+                requests:
+                  cpu: 500m
+                  memory: 512Mi
+                limits:
+                  cpu: "1"
+                  memory: 1Gi
+              volumeMounts:
+                - name: corpus
+                  mountPath: /corpus
+                - name: tmp
+                  mountPath: /tmp
+          volumes:
+            - name: corpus
+              emptyDir: {}
+            - name: tmp
+              emptyDir: {}

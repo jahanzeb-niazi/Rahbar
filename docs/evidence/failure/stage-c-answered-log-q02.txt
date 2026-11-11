@@ -1,0 +1,1 @@
+{"ts": "2026-11-09T03:34:52Z", "level": "INFO", "logger": "rahbar.answer", "msg": "answered", "request_id": "4f8fca9429054df980ec107957c8598c", "top_k": 1, "chunk_ids": ["grading-page-html-0007"], "scores": [0.7768], "abstained": false, "answered_from_context": true, "citations": 1, "cached": false, "followup": false, "fallback": false, "provider": "stub"}

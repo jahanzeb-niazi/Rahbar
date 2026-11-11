@@ -21,6 +21,7 @@ from .logjson import configure_logging, request_id_var
 from .providers.llm import get_provider
 from .retrieval import get_retriever
 from .routes import ask, health, metrics
+from .services.cache import get_cache
 
 log = logging.getLogger("rahbar.api")
 
@@ -32,13 +33,19 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     app.state.settings = settings
     app.state.retriever = get_retriever(settings)
     app.state.provider = get_provider(settings)
-    # STARTER-TODO(4.4): compare the collection's embedding-model metadata with
-    # settings.embed_model here, and make /readyz fail on a mismatch.
-    # This process only reads the index. The indexer Job writes it.
+    app.state.cache = get_cache(settings.redis_host, settings.redis_port,
+                                settings.cache_threshold)
+    # This process only reads the index; the indexer Job writes it (ADR 0001).
+    # Startup touches no dependency, so liveness never waits on Chroma or Redis. The
+    # embedding pin (section 4.4) is checked by /readyz, first a few seconds after boot and
+    # then every 10 s: a mismatch is logged once with both model names and keeps the pod
+    # at 0/1 READY for as long as it lasts.
     log.info(
         "api started",
         extra={"retriever": settings.retriever, "llm_provider": settings.llm_provider,
-               "embed_model": settings.embed_model, "top_k": settings.top_k},
+               "embed_model": settings.embed_model, "top_k": settings.top_k,
+               "relevance_floor": settings.relevance_floor,
+               "cache_threshold": settings.cache_threshold, "temperature": settings.temperature},
     )
     yield
 

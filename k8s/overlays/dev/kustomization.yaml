@@ -1,0 +1,26 @@
+# minikube on a laptop: images built locally and loaded with `make images`
+# (minikube image load), pulled IfNotPresent. Apply with: kubectl apply -k k8s/overlays/dev
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - networkpolicy-ollama.yaml
+# On Docker Desktop (Windows/macOS) minikube can leave host.minikube.internal unresolved
+# (`minikube ssh "grep host.minikube.internal /etc/hosts"` prints <nil>). Docker Desktop's
+# host address is 192.168.65.254, so the dev overlay names it directly; it must match the
+# cidr in networkpolicy-ollama.yaml.
+patches:
+  - target:
+      kind: ConfigMap
+      name: rahbar-config
+    patch: |-
+      - op: replace
+        path: /data/OLLAMA_URL
+        value: http://192.168.65.254:11434
+images:
+  - name: rahbar-api
+    newTag: dev
+  - name: rahbar-indexer
+    newTag: dev
+  - name: rahbar-ui
+    newTag: dev

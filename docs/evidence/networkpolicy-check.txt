@@ -1,0 +1,26 @@
+# NetworkPolicy check (2026-11-08T14:52:05Z), cluster started with --cni=calico
+
+$ kubectl exec -n rahbar deploy/ui -- wget -q -T 5 -O- http://chroma:8000/api/v2/heartbeat
+wget: download timed out
+command terminated with exit code 1
+exit code: 1   <- ui -> chroma is denied (default-deny + chroma-ingress allows only api and indexer)
+
+$ kubectl exec -n rahbar deploy/api -- python -c "...GET http://chroma:8000/api/v2/heartbeat..."
+{"nanosecond heartbeat":1794149534971608909}
+exit code: 0   <- api -> chroma is allowed
+
+$ kubectl exec -n rahbar deploy/ui -- wget -q -T 5 -O- http://redis:6379
+wget: download timed out
+command terminated with exit code 1
+exit code: 1   <- ui -> redis is denied
+
+NAME                  POD-SELECTOR           AGE
+allow-dns-egress      <none>                 49m
+allow-ollama-egress   app in (api,indexer)   49m
+api-egress            app=api                49m
+api-ingress           app=api                49m
+chroma-ingress        app=chroma             49m
+default-deny-all      <none>                 49m
+indexer-egress        app=indexer            49m
+redis-ingress         app=redis              49m
+ui-ingress            app=ui                 49m

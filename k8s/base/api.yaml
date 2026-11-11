@@ -1,0 +1,87 @@
+# The API: 3 replicas that only READ the index (ADR 0001). Indexing never runs here.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: rahbar
+  labels:
+    app: api
+spec:
+  replicas: 3
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0            # never fewer ready pods than desired during a rollout
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      serviceAccountName: api
+      enableServiceLinks: false     # CHROMA_PORT/REDIS_PORT come from the ConfigMap only
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: api
+          image: rahbar-api:dev
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: rahbar-config
+            - secretRef:
+                name: rahbar-secret
+                optional: true     # ollama-host needs no key; hosted mode would
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          # Sized from docs/evidence/kubectl-top-during-generation.txt (19-question golden
+          # set, real llama3.2:3b): peak 72Mi and 279m per pod, typically 12-13m because the
+          # pod mostly waits on Ollama. Memory request = peak + ~30%; limit 256Mi leaves room
+          # for a burst of concurrent requests. CPU request 100m keeps the HPA's 70% target
+          # meaningful; limit 500m covers the measured 279m burst (JSON parsing, embedding call).
+          resources:
+            requests:
+              cpu: 100m
+              memory: 96Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          startupProbe:            # finished booting? liveness and readiness wait for it
+            httpGet: {path: /healthz, port: 8000}
+            failureThreshold: 30
+            periodSeconds: 2
+          livenessProbe:           # alive? touches no dependency (section 4.3)
+            httpGet: {path: /healthz, port: 8000}
+            periodSeconds: 20
+            failureThreshold: 3
+          readinessProbe:          # Chroma up, collection non-empty, pin matches, Redis up
+            httpGet: {path: /readyz, port: 8000}
+            periodSeconds: 10
+            failureThreshold: 3
+          lifecycle:
+            preStop:               # leave the Service's endpoints before connections stop
+              exec:
+                command: ["sleep", "5"]
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}

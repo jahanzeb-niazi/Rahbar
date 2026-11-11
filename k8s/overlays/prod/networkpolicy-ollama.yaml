@@ -1,0 +1,18 @@
+# In the ephemeral kind cluster used by CI/CD, Ollama runs as a container on the "kind"
+# Docker network (172.16.0.0/12). api and indexer may reach it on 11434 and nothing else there.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ollama-egress
+  namespace: rahbar
+spec:
+  podSelector:
+    matchExpressions:
+      - {key: app, operator: In, values: ["api", "indexer"]}
+  policyTypes: ["Egress"]
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 172.16.0.0/12
+      ports:
+        - {protocol: TCP, port: 11434}

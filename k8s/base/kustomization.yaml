@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: rahbar
+# secret.placeholder.yaml is deliberately NOT listed: applying it would overwrite the real
+# Secret. Create the Secret from the command line (make secret) if a key is ever needed.
+resources:
+  - namespace.yaml
+  - serviceaccounts.yaml
+  - configmap.yaml
+  - chroma-statefulset.yaml
+  - redis.yaml
+  - api.yaml
+  - ui.yaml
+  - indexer-job.yaml
+  - reindex-cronjob.yaml
+  - services.yaml
+  - ingress.yaml
+  - networkpolicy.yaml
+  - hpa.yaml

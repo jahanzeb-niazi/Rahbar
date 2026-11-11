@@ -1,0 +1,17 @@
+| similarity | same answer | cached question | new question |
+| ---: | --- | --- | --- |
+| 0.9622 | yes | What CGPA puts a student on academic warning? | Which CGPA results in an academic warning? |
+| 0.9954 | yes | What CGPA puts a student on academic warning? | what cgpa puts a student on academic warning |
+| 0.9244 | yes | How much is the security deposit? | What is the amount of the security deposit? |
+| 0.9746 | yes | Can I freeze my semester? | Is it possible to freeze a semester? |
+| 0.8693 | yes | What is the tuition refund if I withdraw by the 15th day? | What percentage of tuition is refunded within 15 days? |
+| 0.879 | no | What is the refund if I withdraw in the first week? | What is the refund if I withdraw in the third week? |
+| 0.8382 | no | What CGPA puts a student on academic warning? | What CGPA puts a student on probation? |
+| 0.6561 | no | What is the fee for rechecking a paper? | What is the fee for a duplicate degree? |
+| 0.9323 | no | Can I take a new elective in summer under the 2026 rules? | Can I take a new elective in summer under the 2023 rules? |
+| 0.9132 | no | What grade point is a B-? | What grade point is a B+? |
+
+threshold 0.9: correct hits 4/5, false hits 2 ['0.9323: Can I take a new elective in summer under the 2023 rules?', '0.9132: What grade point is a B+?']
+threshold 0.93: correct hits 3/5, false hits 1 ['0.9323: Can I take a new elective in summer under the 2023 rules?']
+threshold 0.95: correct hits 3/5, false hits 0 []
+threshold 0.97: correct hits 2/5, false hits 0 []

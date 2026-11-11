@@ -1,0 +1,62 @@
+# The indexer: a one-shot Job and the ONLY writer to Chroma (ADR 0001). It downloads the
+# corpus (FETCH_CORPUS), checks every SHA-256 against corpus/MANIFEST.md, then extracts,
+# cleans, chunks, embeds and stores into a new collection generation, flips the pointer,
+# and exits. Re-index without a redeploy:
+#   kubectl create job --from=cronjob/reindex manual-reindex-1 -n rahbar
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: indexer
+  namespace: rahbar
+  labels:
+    app: indexer
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 3600
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app: indexer
+    spec:
+      restartPolicy: OnFailure
+      serviceAccountName: indexer
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: indexer
+          image: rahbar-indexer:dev
+          imagePullPolicy: IfNotPresent
+          command: ["python", "-m", "pipeline.run"]
+          envFrom:
+            - configMapRef:
+                name: rahbar-config
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          volumeMounts:
+            - name: corpus
+              mountPath: /corpus
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: corpus
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
