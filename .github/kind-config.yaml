@@ -1,0 +1,16 @@
+# kind cluster for CI/CD: one node labelled for ingress-nginx, with port 80 mapped to the
+# runner so the eval and the smoke test go through the Ingress, as a user would.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
