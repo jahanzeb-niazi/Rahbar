@@ -34,7 +34,7 @@ data:
   # Safety net, not the main abstention mechanism (docs/PIPELINE.md): every relevant passage in
   # the golden set scored >= 0.6929; the hostel question a02 topped out at 0.6471. Passages below
   # the floor are dropped from the prompt; if none is left the API abstains without calling the LLM.
-  RELEVANCE_FLOOR: "0.50"
+  RELEVANCE_FLOOR: "0.65"
   # lowest of 0.90/0.93/0.95/0.97 with zero false hits (docs/evidence/cache-threshold-experiment.txt)
   CACHE_THRESHOLD: "0.95"
   # 0.1: facts and JSON want near-deterministic decoding; not 0, to leave the model room to
