@@ -10,11 +10,11 @@ resources:
   - networkpolicy-ollama.yaml
 images:
   - name: rahbar-api
-    newName: docker.io/DOCKERHUB_USERNAME/rahbar-api
+    newName: docker.io/jahanzebniazi/rahbar-api
     newTag: set-by-cd
   - name: rahbar-indexer
-    newName: docker.io/DOCKERHUB_USERNAME/rahbar-indexer
+    newName: docker.io/jahanzebniazi/rahbar-indexer
     newTag: set-by-cd
   - name: rahbar-ui
-    newName: docker.io/DOCKERHUB_USERNAME/rahbar-ui
+    newName: docker.io/jahanzebniazi/rahbar-ui
     newTag: set-by-cd
