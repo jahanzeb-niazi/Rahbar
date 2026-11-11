@@ -1,6 +1,6 @@
 # RAHBAR: grounded answers from FAST-NUCES documents, on Kubernetes
 
-[![ci](https://github.com/GITHUB_OWNER/GITHUB_REPO/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jahanzeb-niazi/Rahbar/actions/workflows/ci.yml)
+[![ci](https://github.com/jahanzeb-niazi/Rahbar/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jahanzeb-niazi/Rahbar/actions/workflows/ci.yml)
 [![cd](https://github.com/jahanzeb-niazi/Rahbar/actions/workflows/cd.yml/badge.svg?branch=main)](https://github.com/jahanzeb-niazi/Rahbar/actions/workflows/cd.yml)
 
 A student who wants to know whether they can register after failing a prerequisite has two
