@@ -6,6 +6,11 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
+# Security fixes for the base image's Debian packages (openssl, gnutls, perl, ...). The tag
+# pins Python, but its Debian packages go stale; Trivy fails the build on any HIGH or
+# CRITICAL finding with a fix available, so pick up those fixes at build time.
+RUN apt-get update     && apt-get upgrade -y --no-install-recommends     && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # Dependencies first, so a code change does not reinstall them.

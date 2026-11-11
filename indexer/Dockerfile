@@ -9,8 +9,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # OCR needs system packages, not only pip packages: tesseract for OCR and poppler
-# (pdftoppm) for rendering scanned pages to images.
+# (pdftoppm) for rendering scanned pages to images. `upgrade` picks up security fixes for
+# the base image's Debian packages, which Trivy fails the build on.
 RUN apt-get update \
+    && apt-get upgrade -y --no-install-recommends \
     && apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-eng poppler-utils \
     && rm -rf /var/lib/apt/lists/*
 
