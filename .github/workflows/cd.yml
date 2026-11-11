@@ -85,7 +85,10 @@ jobs:
       - name: smoke test through the Ingress
         run: |
           set -euo pipefail
-          curl -fsS -H "Host: rahbar.local" http://localhost/ | grep -qi "rahbar"
+          # Save the page first: piping curl into `grep -q` makes grep exit at the first
+          # match, curl then fails writing the rest (exit 23), and pipefail fails the step.
+          curl -fsS -H "Host: rahbar.local" -o index.html http://localhost/
+          grep -qi "rahbar" index.html
           curl -fsS -H "Host: rahbar.local" -H "Content-Type: application/json" \
             -d '{"question": "When is a student placed on academic warning?"}' \
             http://localhost/api/ask | tee answer.json
