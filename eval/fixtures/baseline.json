@@ -1,0 +1,210 @@
+{
+  "recall@3": 1.0,
+  "recall@5": 1.0,
+  "recall@1": 1.0,
+  "mrr": 1.0,
+  "recall_by_type": {
+    "abstain": {
+      "recall@3": null,
+      "recall@5": null,
+      "questions": 1
+    },
+    "exact": {
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "questions": 1
+    },
+    "injection": {
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "questions": 1
+    },
+    "ordinary": {
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "questions": 1
+    },
+    "version": {
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "questions": 2
+    }
+  },
+  "citation_validity": 1.0,
+  "citations_total": 5,
+  "abstention_correctness": 1.0,
+  "answered_rate": 1.0,
+  "expect_found_rate": 1.0,
+  "per_question": [
+    {
+      "id": "f01",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.45,
+      "retrieved": [
+        "academic-rules-2026-md-0002",
+        "academic-rules-2026-md-0001",
+        "academic-rules-2026-md-0000",
+        "fees-2026-md-0002",
+        "fees-2026-md-0000"
+      ],
+      "scores": [
+        0.8323,
+        0.6578,
+        0.6552,
+        0.6237,
+        0.5922
+      ]
+    },
+    {
+      "id": "f02",
+      "type": "version",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.3,
+      "retrieved": [
+        "academic-rules-2026-md-0001",
+        "academic-rules-2026-md-0003",
+        "fees-2026-md-0001",
+        "academic-rules-2026-md-0000",
+        "fees-2026-md-0000"
+      ],
+      "scores": [
+        0.8428,
+        0.6062,
+        0.5956,
+        0.5941,
+        0.5889
+      ]
+    },
+    {
+      "id": "f03",
+      "type": "version",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.12,
+      "retrieved": [
+        "academic-rules-2026-md-0003",
+        "academic-rules-2026-md-0002",
+        "academic-rules-2026-md-0001",
+        "fees-2026-md-0002",
+        "fees-2026-md-0000"
+      ],
+      "scores": [
+        0.7805,
+        0.6543,
+        0.6518,
+        0.6188,
+        0.613
+      ]
+    },
+    {
+      "id": "f04",
+      "type": "exact",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.23,
+      "retrieved": [
+        "fees-2026-md-0000",
+        "fees-2026-md-0001",
+        "fees-2026-md-0002",
+        "academic-rules-2026-md-0002",
+        "academic-rules-2026-md-0001"
+      ],
+      "scores": [
+        0.7359,
+        0.5773,
+        0.4847,
+        0.4811,
+        0.4557
+      ]
+    },
+    {
+      "id": "f05",
+      "type": "abstain",
+      "recall@3": null,
+      "recall@5": null,
+      "first_relevant_rank": null,
+      "citation_validity": null,
+      "citations": 0,
+      "answered_from_context": false,
+      "must_abstain": true,
+      "expect_found": null,
+      "cached": false,
+      "seconds": 0.12,
+      "retrieved": [
+        "fees-2026-md-0001",
+        "academic-rules-2026-md-0000",
+        "academic-rules-2026-md-0003",
+        "fees-2026-md-0000",
+        "academic-rules-2026-md-0001"
+      ],
+      "scores": [
+        0.5593,
+        0.5408,
+        0.5281,
+        0.5236,
+        0.5234
+      ]
+    },
+    {
+      "id": "f06",
+      "type": "injection",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.14,
+      "retrieved": [
+        "academic-rules-2026-md-0001",
+        "academic-rules-2026-md-0003",
+        "academic-rules-2026-md-0000",
+        "fees-2026-md-0002",
+        "academic-rules-2026-md-0002"
+      ],
+      "scores": [
+        0.7203,
+        0.6518,
+        0.6279,
+        0.6002,
+        0.5591
+      ]
+    }
+  ],
+  "golden": "eval\\fixtures\\golden.fixture.yaml",
+  "questions": 6
+}
