@@ -1,0 +1,245 @@
+{"ts": "2026-11-09T03:42:56Z", "logger": "rahbar.indexer", "msg": "indexer starting", "dummy": false, "embed_model": "nomic-embed-text", "collection": "rahbarbrk", "chroma": "chroma:8000", "pod": "break-b-4g76s"}
+{"ts": "2026-11-09T03:42:56Z", "logger": "rahbar.indexer", "msg": "fetching corpus", "into": "/corpus/raw"}
+  fetch   Undergraduate Academic Rules (Aug 2023)
+          undergraduate-academic-rules-aug-2023.pdf, 14,888,226 bytes
+  fetch   Academic Rules Handbook (Jun 2026)
+          academic-rules-handbook-jun-2026.pdf, 987,731 bytes
+  fetch   Prospectus 2026 - Academic Rules and Regulations
+          prospectus-2026-academic-rules-and-regulations.pdf, 7,066,767 bytes
+  fetch   Student Handbook (Jun 2026)
+          student-handbook-jun-2026.pdf, 1,980,275 bytes
+  fetch   Annual Report 2019-20
+          annual-report-2019-20.pdf, 891,216 bytes
+  fetch   Annual Report 2023-24
+          annual-report-2023-24.pdf, 5,100,456 bytes
+  fetch   Fee Structure page
+          fee-structure-page.html, 91,429 bytes
+  fetch   Grading page
+          grading-page.html, 95,673 bytes
+  fetch   Faculty Entrepreneurship and Technical Start-ups Policy
+          faculty-entrepreneurship-and-technical-start-ups-policy.pdf, 3,872,809 bytes
+
+9 documents in /corpus/raw; checking them against corpus/MANIFEST.md
+  ok        undergraduate-academic-rules-aug-2023.pdf
+  ok        academic-rules-handbook-jun-2026.pdf
+  ok        prospectus-2026-academic-rules-and-regulations.pdf
+  ok        student-handbook-jun-2026.pdf
+  ok        annual-report-2019-20.pdf
+  ok        annual-report-2023-24.pdf
+  ok        fee-structure-page.html
+  ok        grading-page.html
+  ok        faculty-entrepreneurship-and-technical-start-ups-policy.pdf
+
+9 of 9 match the manifest
+{"ts": "2026-11-09T03:47:53Z", "logger": "rahbar.indexer.extract", "msg": "ocr applied", "source": "undergraduate-academic-rules-aug-2023.pdf", "pages": 24}
+{"ts": "2026-11-09T03:47:53Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "undergraduate-academic-rules-aug-2023.pdf", "pages": 26, "ocr_pages": 24, "empty_pages": 1, "doc_version": "2023-08", "superseded": true, "chunks": 64}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:48:10Z", "logger": "rahbar.indexer.extract", "msg": "ocr applied", "source": "academic-rules-handbook-jun-2026.pdf", "pages": 5}
+{"ts": "2026-11-09T03:48:10Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "academic-rules-handbook-jun-2026.pdf", "pages": 58, "ocr_pages": 5, "empty_pages": 3, "doc_version": "2026-06", "superseded": false, "chunks": 122}
+{"ts": "2026-11-09T03:48:12Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "prospectus-2026-academic-rules-and-regulations.pdf", "pages": 5, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2026", "superseded": false, "chunks": 45}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:48:34Z", "logger": "rahbar.indexer.extract", "msg": "ocr applied", "source": "student-handbook-jun-2026.pdf", "pages": 4}
+{"ts": "2026-11-09T03:48:34Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "student-handbook-jun-2026.pdf", "pages": 64, "ocr_pages": 4, "empty_pages": 3, "doc_version": "2026-06", "superseded": false, "chunks": 141}
+{"ts": "2026-11-09T03:48:42Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "annual-report-2019-20.pdf", "pages": 33, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2019-20", "superseded": false, "chunks": 97}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:48:56Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "annual-report-2023-24.pdf", "pages": 85, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2023-24", "superseded": false, "chunks": 421}
+{"ts": "2026-11-09T03:48:56Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "fee-structure-page.html", "pages": 1, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2026-27", "superseded": false, "chunks": 9}
+{"ts": "2026-11-09T03:48:56Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "grading-page.html", "pages": 1, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2026", "superseded": false, "chunks": 13}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:50:09Z", "logger": "rahbar.indexer.extract", "msg": "ocr applied", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "pages": 8}
+{"ts": "2026-11-09T03:50:09Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "pages": 8, "ocr_pages": 8, "empty_pages": 0, "doc_version": "2022-05", "superseded": false, "chunks": 24}
+{"ts": "2026-11-09T03:50:09Z", "logger": "rahbar.indexer", "msg": "chunking summary", "chunk_size": 100, "chunk_overlap": 0, "chunks": 936, "original_tokens": 93318, "stored_tokens": 94027, "storage_amplification": 1.008}
+{"ts": "2026-11-09T03:53:35Z", "logger": "rahbar.indexer", "msg": "embedded", "chunks": 936, "dimension": 768, "embed_model": "nomic-embed-text"}
+{"ts": "2026-11-09T03:53:40Z", "logger": "rahbar.indexer", "msg": "indexer finished", "chunks": 936, "seconds": 644.7}

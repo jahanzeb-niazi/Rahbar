@@ -1,0 +1,25 @@
+# Delete an api pod while traffic flows (section 1: 'they delete a pod, and nothing breaks'). 2026-11-09T03:33:31Z
+# A loop POSTs a (cached) question to /api/ask through the Ingress for ~40 s; the pod is deleted 5 s in.
+# preStop sleep 5 + maxUnavailable 0: the pod leaves the Service endpoints before it stops accepting connections.
+
+$ kubectl get pods -n rahbar -l app=api
+NAME                   READY   STATUS    RESTARTS   AGE
+api-7dd86944b4-45knc   1/1     Running   0          17m
+api-7dd86944b4-bhkjr   1/1     Running   0          95s
+api-7dd86944b4-x54n2   1/1     Running   0          17m
+
+$ kubectl delete pod/api-7dd86944b4-45knc -n rahbar
+pod "api-7dd86944b4-45knc" deleted from rahbar namespace
+
+$ kubectl get pods -n rahbar -l app=api   (a replacement was created; the Deployment holds 3)
+NAME                   READY   STATUS    RESTARTS   AGE
+api-7dd86944b4-bhkjr   1/1     Running   0          2m15s
+api-7dd86944b4-rhfg2   1/1     Running   0          35s
+api-7dd86944b4-x54n2   1/1     Running   0          18m
+
+# HTTP status codes of every request the loop sent (count, code):
+    216 200
+
+$ kubectl get endpoints api -n rahbar
+NAME   ENDPOINTS                                                     AGE
+api    10.244.120.102:8000,10.244.120.108:8000,10.244.120.109:8000   13h

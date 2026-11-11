@@ -1,0 +1,32 @@
+# Section 4.6: ship a visible change with kubectl set image, watch it roll out, then undo. 2026-11-09T03:17:43Z
+# The visible change: rahbar-ui:v2 shows the heading 'RAHBAR v2'.
+
+$ curl -s -H "Host: rahbar.local" http://127.0.0.1/ | grep -o "<h1>[^<]*</h1>"
+<h1>RAHBAR</h1>
+
+$ kubectl set image deployment/ui ui=rahbar-ui:v2 -n rahbar
+deployment.apps/ui image updated
+$ kubectl rollout status deployment/ui -n rahbar
+Waiting for deployment "ui" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "ui" rollout to finish: 1 old replicas are pending termination...
+deployment "ui" successfully rolled out
+$ curl ... (after the rollout)
+<h1>RAHBAR v2</h1>
+
+$ kubectl rollout history deployment/ui -n rahbar
+deployment.apps/ui 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+$ kubectl rollout undo deployment/ui -n rahbar
+Warning: resource deployments/ui was previously managed with 'kubectl apply'. Rolling back will not update the kubectl.kubernetes.io/last-applied-configuration annotation, which may cause unexpected behavior on future 'kubectl apply' operations. Consider using 'kubectl apply' with your previous configuration file instead.
+deployment.apps/ui rolled back
+$ kubectl rollout status deployment/ui -n rahbar
+Waiting for deployment "ui" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "ui" rollout to finish: 1 old replicas are pending termination...
+deployment "ui" successfully rolled out
+$ curl ... (after the undo: the previous version is serving again)
+<h1>RAHBAR</h1>
+$ kubectl get deployment ui -n rahbar -o jsonpath={..image}
+rahbar-ui:dev

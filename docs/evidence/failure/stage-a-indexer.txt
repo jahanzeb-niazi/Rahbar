@@ -1,0 +1,282 @@
+{"ts": "2026-11-09T03:34:30Z", "logger": "rahbar.indexer", "msg": "indexer starting", "dummy": false, "embed_model": "nomic-embed-text", "collection": "rahbarbrk", "chroma": "chroma:8000", "pod": "break-a-fpj8n"}
+{"ts": "2026-11-09T03:34:30Z", "logger": "rahbar.indexer", "msg": "fetching corpus", "into": "/corpus/raw"}
+  fetch   Undergraduate Academic Rules (Aug 2023)
+          undergraduate-academic-rules-aug-2023.pdf, 14,888,226 bytes
+  fetch   Academic Rules Handbook (Jun 2026)
+          academic-rules-handbook-jun-2026.pdf, 987,731 bytes
+  fetch   Prospectus 2026 - Academic Rules and Regulations
+          prospectus-2026-academic-rules-and-regulations.pdf, 7,066,767 bytes
+  fetch   Student Handbook (Jun 2026)
+          student-handbook-jun-2026.pdf, 1,980,275 bytes
+  fetch   Annual Report 2019-20
+          annual-report-2019-20.pdf, 891,216 bytes
+  fetch   Annual Report 2023-24
+          annual-report-2023-24.pdf, 5,100,456 bytes
+  fetch   Fee Structure page
+          fee-structure-page.html, 91,429 bytes
+  fetch   Grading page
+          grading-page.html, 95,673 bytes
+  fetch   Faculty Entrepreneurship and Technical Start-ups Policy
+          faculty-entrepreneurship-and-technical-start-ups-policy.pdf, 3,872,809 bytes
+
+9 documents in /corpus/raw; checking them against corpus/MANIFEST.md
+  ok        undergraduate-academic-rules-aug-2023.pdf
+  ok        academic-rules-handbook-jun-2026.pdf
+  ok        prospectus-2026-academic-rules-and-regulations.pdf
+  ok        student-handbook-jun-2026.pdf
+  ok        annual-report-2019-20.pdf
+  ok        annual-report-2023-24.pdf
+  ok        fee-structure-page.html
+  ok        grading-page.html
+  ok        faculty-entrepreneurship-and-technical-start-ups-policy.pdf
+
+9 of 9 match the manifest
+{"ts": "2026-11-09T03:35:39Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 2}
+{"ts": "2026-11-09T03:35:39Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 3}
+{"ts": "2026-11-09T03:35:43Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 4}
+{"ts": "2026-11-09T03:35:44Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 5}
+{"ts": "2026-11-09T03:35:46Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 6}
+{"ts": "2026-11-09T03:35:48Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 7}
+{"ts": "2026-11-09T03:35:50Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 8}
+{"ts": "2026-11-09T03:35:51Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 9}
+{"ts": "2026-11-09T03:35:53Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 10}
+{"ts": "2026-11-09T03:35:56Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 11}
+{"ts": "2026-11-09T03:36:00Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 12}
+{"ts": "2026-11-09T03:36:02Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 13}
+{"ts": "2026-11-09T03:36:06Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 14}
+{"ts": "2026-11-09T03:36:10Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 15}
+{"ts": "2026-11-09T03:36:13Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 16}
+{"ts": "2026-11-09T03:36:17Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 17}
+{"ts": "2026-11-09T03:36:22Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 18}
+{"ts": "2026-11-09T03:36:25Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 19}
+{"ts": "2026-11-09T03:36:31Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 20}
+{"ts": "2026-11-09T03:36:36Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 21}
+{"ts": "2026-11-09T03:36:38Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 22}
+{"ts": "2026-11-09T03:36:45Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 23}
+{"ts": "2026-11-09T03:36:51Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 24}
+{"ts": "2026-11-09T03:36:53Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "undergraduate-academic-rules-aug-2023.pdf", "page": 25}
+{"ts": "2026-11-09T03:36:54Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "undergraduate-academic-rules-aug-2023.pdf", "pages": 26, "ocr_pages": 0, "empty_pages": 24, "doc_version": "2023-08", "superseded": true, "chunks": 2}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:36:55Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "academic-rules-handbook-jun-2026.pdf", "page": 1}
+{"ts": "2026-11-09T03:36:55Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "academic-rules-handbook-jun-2026.pdf", "page": 2}
+{"ts": "2026-11-09T03:37:11Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "academic-rules-handbook-jun-2026.pdf", "page": 56}
+{"ts": "2026-11-09T03:37:11Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "academic-rules-handbook-jun-2026.pdf", "page": 57}
+{"ts": "2026-11-09T03:37:13Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "academic-rules-handbook-jun-2026.pdf", "page": 58}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:37:13Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "academic-rules-handbook-jun-2026.pdf", "pages": 58, "ocr_pages": 0, "empty_pages": 5, "doc_version": "2026-06", "superseded": false, "chunks": 94}
+{"ts": "2026-11-09T03:37:17Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "prospectus-2026-academic-rules-and-regulations.pdf", "pages": 5, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2026", "superseded": false, "chunks": 34}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:37:18Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "student-handbook-jun-2026.pdf", "page": 1}
+{"ts": "2026-11-09T03:37:18Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "student-handbook-jun-2026.pdf", "page": 2}
+{"ts": "2026-11-09T03:37:31Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "student-handbook-jun-2026.pdf", "page": 63}
+{"ts": "2026-11-09T03:37:33Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "student-handbook-jun-2026.pdf", "page": 64}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:37:33Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "student-handbook-jun-2026.pdf", "pages": 64, "ocr_pages": 0, "empty_pages": 5, "doc_version": "2026-06", "superseded": false, "chunks": 113}
+{"ts": "2026-11-09T03:37:43Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "annual-report-2019-20.pdf", "pages": 33, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2019-20", "superseded": false, "chunks": 129}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "annual-report-2023-24.pdf", "pages": 85, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2023-24", "superseded": false, "chunks": 378}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "fee-structure-page.html", "pages": 1, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2026-27", "superseded": false, "chunks": 10}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "grading-page.html", "pages": 1, "ocr_pages": 0, "empty_pages": 0, "doc_version": "2026", "superseded": false, "chunks": 11}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "page": 1}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "page": 2}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "page": 3}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "page": 4}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "page": 5}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "page": 6}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "page": 7}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer.extract", "msg": "page has no text layer and OCR is unavailable; page lost", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "page": 8}
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+CropBox missing from /Page, defaulting to MediaBox
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer", "msg": "chunked", "source": "faculty-entrepreneurship-and-technical-start-ups-policy.pdf", "pages": 8, "ocr_pages": 0, "empty_pages": 8, "doc_version": "2022-05", "superseded": false, "chunks": 0}
+{"ts": "2026-11-09T03:38:14Z", "logger": "rahbar.indexer", "msg": "chunking summary", "chunk_size": 200, "chunk_overlap": 25, "chunks": 771, "original_tokens": 84226, "stored_tokens": 90359, "storage_amplification": 1.073}
+{"ts": "2026-11-09T03:41:23Z", "logger": "rahbar.indexer", "msg": "embedded", "chunks": 771, "dimension": 768, "embed_model": "nomic-embed-text"}
+{"ts": "2026-11-09T03:41:30Z", "logger": "rahbar.indexer", "msg": "indexer finished", "chunks": 771, "seconds": 420.5}

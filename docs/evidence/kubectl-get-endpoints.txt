@@ -1,0 +1,8 @@
+# kubectl get endpoints api -n rahbar -o wide  (2026-11-08T14:51:50Z): 3 pod IPs found by the Service's selector app=api
+NAME   ENDPOINTS                                                  AGE
+api    10.244.120.78:8000,10.244.120.79:8000,10.244.120.80:8000   49m
+
+NAME                  READY   STATUS    RESTARTS   AGE   IP              NODE       NOMINATED NODE   READINESS GATES
+api-dc7b45f56-2tksb   1/1     Running   0          23m   10.244.120.79   minikube   <none>           <none>
+api-dc7b45f56-fht7q   1/1     Running   0          23m   10.244.120.78   minikube   <none>           <none>
+api-dc7b45f56-jpkvz   1/1     Running   0          22m   10.244.120.80   minikube   <none>           <none>

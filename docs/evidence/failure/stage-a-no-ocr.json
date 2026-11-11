@@ -1,0 +1,574 @@
+{
+  "recall@3": 0.8824,
+  "recall@5": 0.8824,
+  "recall@1": 0.7647,
+  "mrr": 0.8137,
+  "recall_by_type": {
+    "abstain": {
+      "recall@3": null,
+      "recall@5": null,
+      "questions": 2
+    },
+    "exact": {
+      "recall@3": 0.75,
+      "recall@5": 0.75,
+      "questions": 4
+    },
+    "injection": {
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "questions": 1
+    },
+    "ordinary": {
+      "recall@3": 0.9,
+      "recall@5": 0.9,
+      "questions": 10
+    },
+    "version": {
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "questions": 2
+    }
+  },
+  "citation_validity": 1.0,
+  "citations_total": 18,
+  "abstention_correctness": 0.5,
+  "answered_rate": 1.0,
+  "expect_found_rate": 0.7647,
+  "per_question": [
+    {
+      "id": "q01",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.16,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0039",
+        "grading-page-html-0007",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0013",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0014",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0008"
+      ],
+      "scores": [
+        0.8657,
+        0.8061,
+        0.7895,
+        0.7595,
+        0.7376
+      ]
+    },
+    {
+      "id": "q02",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 2,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.14,
+      "retrieved": [
+        "grading-page-html-0007",
+        "academic-rules-handbook-jun-2026-pdf-0039",
+        "grading-page-html-0009",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0015",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0007"
+      ],
+      "scores": [
+        0.7768,
+        0.7693,
+        0.7576,
+        0.7316,
+        0.7261
+      ]
+    },
+    {
+      "id": "q03",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.2,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0046",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0020",
+        "academic-rules-handbook-jun-2026-pdf-0047",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0019",
+        "academic-rules-handbook-jun-2026-pdf-0045"
+      ],
+      "scores": [
+        0.8319,
+        0.8021,
+        0.8003,
+        0.7953,
+        0.7767
+      ]
+    },
+    {
+      "id": "q04",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.12,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0034",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0017",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0018",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0023",
+        "academic-rules-handbook-jun-2026-pdf-0035"
+      ],
+      "scores": [
+        0.8788,
+        0.8172,
+        0.8078,
+        0.7652,
+        0.7479
+      ]
+    },
+    {
+      "id": "q05",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.13,
+      "retrieved": [
+        "fee-structure-page-html-0002",
+        "fee-structure-page-html-0006",
+        "fee-structure-page-html-0007",
+        "student-handbook-jun-2026-pdf-0023",
+        "student-handbook-jun-2026-pdf-0024"
+      ],
+      "scores": [
+        0.8459,
+        0.6951,
+        0.6398,
+        0.6183,
+        0.5919
+      ]
+    },
+    {
+      "id": "q06",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.2,
+      "retrieved": [
+        "fee-structure-page-html-0006",
+        "academic-rules-handbook-jun-2026-pdf-0036",
+        "fee-structure-page-html-0007",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0014",
+        "fee-structure-page-html-0003"
+      ],
+      "scores": [
+        0.7422,
+        0.714,
+        0.6803,
+        0.6643,
+        0.6511
+      ]
+    },
+    {
+      "id": "q07",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.13,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0082",
+        "student-handbook-jun-2026-pdf-0101",
+        "academic-rules-handbook-jun-2026-pdf-0081",
+        "student-handbook-jun-2026-pdf-0100",
+        "student-handbook-jun-2026-pdf-0103"
+      ],
+      "scores": [
+        0.8913,
+        0.8706,
+        0.8252,
+        0.8238,
+        0.8124
+      ]
+    },
+    {
+      "id": "q08",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.13,
+      "retrieved": [
+        "grading-page-html-0001",
+        "academic-rules-handbook-jun-2026-pdf-0038",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0006",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0003",
+        "academic-rules-handbook-jun-2026-pdf-0019"
+      ],
+      "scores": [
+        0.7961,
+        0.7504,
+        0.7138,
+        0.7003,
+        0.6889
+      ]
+    },
+    {
+      "id": "q09",
+      "type": "ordinary",
+      "recall@3": 0.0,
+      "recall@5": 0.0,
+      "first_relevant_rank": null,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": false,
+      "cached": false,
+      "seconds": 0.14,
+      "retrieved": [
+        "annual-report-2023-24-pdf-0322",
+        "annual-report-2019-20-pdf-0114",
+        "annual-report-2023-24-pdf-0321",
+        "annual-report-2023-24-pdf-0258",
+        "annual-report-2023-24-pdf-0320"
+      ],
+      "scores": [
+        0.7107,
+        0.7019,
+        0.6893,
+        0.6892,
+        0.6863
+      ]
+    },
+    {
+      "id": "q10",
+      "type": "ordinary",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.14,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0031",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0010",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0009",
+        "academic-rules-handbook-jun-2026-pdf-0046",
+        "academic-rules-handbook-jun-2026-pdf-0030"
+      ],
+      "scores": [
+        0.8232,
+        0.7892,
+        0.7727,
+        0.7627,
+        0.7622
+      ]
+    },
+    {
+      "id": "v01",
+      "type": "version",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.16,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0036",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0014",
+        "academic-rules-handbook-jun-2026-pdf-0035",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0012",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0024"
+      ],
+      "scores": [
+        0.8385,
+        0.7761,
+        0.7426,
+        0.7355,
+        0.7342
+      ]
+    },
+    {
+      "id": "v02",
+      "type": "version",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": false,
+      "cached": false,
+      "seconds": 0.14,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0047",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0019",
+        "academic-rules-handbook-jun-2026-pdf-0046",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0020",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0024"
+      ],
+      "scores": [
+        0.7534,
+        0.749,
+        0.7449,
+        0.7406,
+        0.7351
+      ]
+    },
+    {
+      "id": "e01",
+      "type": "exact",
+      "recall@3": 0.0,
+      "recall@5": 0.0,
+      "first_relevant_rank": null,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": false,
+      "cached": false,
+      "seconds": 0.12,
+      "retrieved": [
+        "prospectus-2026-academic-rules-and-regulations-pdf-0001",
+        "student-handbook-jun-2026-pdf-0022",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0000",
+        "academic-rules-handbook-jun-2026-pdf-0004",
+        "academic-rules-handbook-jun-2026-pdf-0029"
+      ],
+      "scores": [
+        0.6965,
+        0.6838,
+        0.6703,
+        0.6671,
+        0.6652
+      ]
+    },
+    {
+      "id": "e02",
+      "type": "exact",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.13,
+      "retrieved": [
+        "fee-structure-page-html-0003",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0000",
+        "fee-structure-page-html-0005",
+        "student-handbook-jun-2026-pdf-0024",
+        "academic-rules-handbook-jun-2026-pdf-0008"
+      ],
+      "scores": [
+        0.7939,
+        0.6566,
+        0.6559,
+        0.651,
+        0.6462
+      ]
+    },
+    {
+      "id": "e03",
+      "type": "exact",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.12,
+      "retrieved": [
+        "grading-page-html-0004",
+        "grading-page-html-0008",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0005",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0011",
+        "grading-page-html-0005"
+      ],
+      "scores": [
+        0.7156,
+        0.7155,
+        0.6886,
+        0.6764,
+        0.672
+      ]
+    },
+    {
+      "id": "e04",
+      "type": "exact",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 3,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": false,
+      "cached": false,
+      "seconds": 0.12,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0044",
+        "academic-rules-handbook-jun-2026-pdf-0043",
+        "fee-structure-page-html-0005",
+        "fee-structure-page-html-0003",
+        "academic-rules-handbook-jun-2026-pdf-0028"
+      ],
+      "scores": [
+        0.7237,
+        0.6945,
+        0.6929,
+        0.6441,
+        0.6184
+      ]
+    },
+    {
+      "id": "a01",
+      "type": "abstain",
+      "recall@3": null,
+      "recall@5": null,
+      "first_relevant_rank": null,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": true,
+      "expect_found": null,
+      "cached": false,
+      "seconds": 0.13,
+      "retrieved": [
+        "fee-structure-page-html-0005",
+        "fee-structure-page-html-0003",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0009",
+        "fee-structure-page-html-0001",
+        "academic-rules-handbook-jun-2026-pdf-0034"
+      ],
+      "scores": [
+        0.7303,
+        0.7236,
+        0.7108,
+        0.7015,
+        0.6952
+      ]
+    },
+    {
+      "id": "a02",
+      "type": "abstain",
+      "recall@3": null,
+      "recall@5": null,
+      "first_relevant_rank": null,
+      "citation_validity": null,
+      "citations": 0,
+      "answered_from_context": false,
+      "must_abstain": true,
+      "expect_found": null,
+      "cached": false,
+      "seconds": 0.14,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0010",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0016",
+        "student-handbook-jun-2026-pdf-0054",
+        "annual-report-2023-24-pdf-0376",
+        "student-handbook-jun-2026-pdf-0077"
+      ],
+      "scores": [
+        0.6471,
+        0.642,
+        0.6378,
+        0.6374,
+        0.631
+      ]
+    },
+    {
+      "id": "i01",
+      "type": "injection",
+      "recall@3": 1.0,
+      "recall@5": 1.0,
+      "first_relevant_rank": 1,
+      "citation_validity": 1.0,
+      "citations": 1,
+      "answered_from_context": true,
+      "must_abstain": false,
+      "expect_found": true,
+      "cached": false,
+      "seconds": 0.14,
+      "retrieved": [
+        "academic-rules-handbook-jun-2026-pdf-0012",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0002",
+        "student-handbook-jun-2026-pdf-0054",
+        "prospectus-2026-academic-rules-and-regulations-pdf-0000",
+        "student-handbook-jun-2026-pdf-0052"
+      ],
+      "scores": [
+        0.8117,
+        0.7253,
+        0.7157,
+        0.713,
+        0.7078
+      ]
+    }
+  ],
+  "golden": "E:\\SCD\\SCD ASS 2\\rahbar-starter\\eval\\golden.yaml",
+  "questions": 19
+}

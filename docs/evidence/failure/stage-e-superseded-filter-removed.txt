@@ -1,0 +1,19 @@
+# Stage E: superseded filter removed (wants_older_version patched to always True), real llama3.2:3b, live index. 2026-11-09T03:35:52Z
+
+## Q: What is the deadline to withdraw from a course?
+answer: The last day of the makeup week of every semester.
+citations: [('academic-rules-handbook-jun-2026.pdf', '4. Registration > Withdrawal from a Course'), ('undergraduate-academic-rules-aug-2023.pdf', '4. Registration > Withdrawal from a Course'), ('prospectus-2026-academic-rules-and-regulations.pdf', '13. Registration of Students under > Warning'), ('undergraduate-academic-rules-aug-2023.pdf', '4. Registration > Adding or Dropping a Course'), ('academic-rules-handbook-jun-2026.pdf', '4. Registration > Adding or Dropping a Course')]
+  retrieved academic-rules-handbook-jun-2026-pdf-0038 0.8385 superseded=None academic-rules-handbook-jun-2026.pdf
+  retrieved undergraduate-academic-rules-aug-2023-pdf-0043 0.8364 superseded=None undergraduate-academic-rules-aug-2023.pdf
+  retrieved prospectus-2026-academic-rules-and-regulations-pdf-0014 0.7761 superseded=None prospectus-2026-academic-rules-and-regulations.pdf
+  retrieved undergraduate-academic-rules-aug-2023-pdf-0042 0.7426 superseded=None undergraduate-academic-rules-aug-2023.pdf
+  retrieved academic-rules-handbook-jun-2026-pdf-0037 0.7426 superseded=None academic-rules-handbook-jun-2026.pdf
+
+## Q: Can I take a new elective course in the summer semester if I need it to graduate?
+answer: No
+citations: [('academic-rules-handbook-jun-2026.pdf', '6. Rules for Summer Semester > B. Graduating')]
+  retrieved undergraduate-academic-rules-aug-2023-pdf-0052 0.7684 superseded=None undergraduate-academic-rules-aug-2023.pdf
+  retrieved academic-rules-handbook-jun-2026-pdf-0049 0.7534 superseded=None academic-rules-handbook-jun-2026.pdf
+  retrieved prospectus-2026-academic-rules-and-regulations-pdf-0019 0.749 superseded=None prospectus-2026-academic-rules-and-regulations.pdf
+  retrieved academic-rules-handbook-jun-2026-pdf-0048 0.7449 superseded=None academic-rules-handbook-jun-2026.pdf
+  retrieved prospectus-2026-academic-rules-and-regulations-pdf-0020 0.7406 superseded=None prospectus-2026-academic-rules-and-regulations.pdf

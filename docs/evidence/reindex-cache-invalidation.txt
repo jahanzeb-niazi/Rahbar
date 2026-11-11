@@ -1,0 +1,45 @@
+# Section 4.2: re-index with one command, no redeploy; the semantic cache is invalidated. 2026-11-09T03:18:38Z
+
+$ kubectl exec -n rahbar deploy/redis -- redis-cli KEYS "rahbar:cache:*"
+rahbar:cache:rahbar-g20261108164942
+
+$ curl -X POST http://rahbar.local/api/ask -d '{"question":"How much is the security deposit?"}'   (first time: generated)
+x-cache: miss
+{"request_id":"c45612b88be8f0cad0d0f6b9c4a30e16","answer":"Rs 20,000","citations":[{"source":"fee-structure-page.html","section":"Security Deposit","page":1}],"answered_from_context":true,"confidence":"high","retrieved":[{"chunk_id":"fee-structure-page-html-00
+$ curl -X POST http://rahbar.local/api/ask -d '{"question":"How much is the security deposit?"}'   (second time: from the cache)
+x-cache: hit
+{"request_id":"db07a113f45bbd184bb7051de9c71e88","answer":"Rs 20,000","citations":[{"source":"fee-structure-page.html","section":"Security Deposit","page":1}],"answered_from_context":true,"confidence":"high","retrieved":[{"chunk_id":"fee-structure-page-html-00
+
+$ kubectl exec -n rahbar deploy/redis -- redis-cli HLEN rahbar:cache:rahbar-g20261108164942
+15
+
+$ kubectl get pods -n rahbar -l app=api   (before: note the ages; no redeploy will happen)
+NAME                   READY   STATUS    RESTARTS   AGE
+api-7dd86944b4-28nrf   1/1     Running   0          3m7s
+api-7dd86944b4-45knc   1/1     Running   0          2m50s
+api-7dd86944b4-x54n2   1/1     Running   0          3m25s
+
+$ kubectl create job --from=cronjob/reindex manual-reindex-1 -n rahbar
+job.batch/manual-reindex-1 created
+
+$ kubectl get job manual-reindex-1 -n rahbar
+NAME               STATUS     COMPLETIONS   DURATION   AGE
+manual-reindex-1   Complete   1/1           10m        10m
+$ kubectl logs job/manual-reindex-1 -n rahbar | grep -E "chunking summary|pointer|indexer finished"
+{"ts": "2026-11-09T03:26:01Z", "logger": "rahbar.indexer", "msg": "chunking summary", "chunk_size": 200, "chunk_overlap": 25, "chunks": 877, "original_tokens": 93318, "stored_tokens": 99943, "storage_amplification": 1.071}
+{"ts": "2026-11-09T03:29:41Z", "logger": "rahbar.indexer", "msg": "indexer finished", "chunks": 877, "seconds": 624.1}
+
+$ curl -X POST http://rahbar.local/api/ask -d '{"question":"How much is the security deposit?"}'   (same question after the re-index)
+x-cache: miss
+{"request_id":"59c110b76d7ffeac8257cc81ec9023cb","answer":"Rs 20,000","citations":[{"source":"fee-structure-page.html","section":"Security Deposit","page":1}],"answered_from_context":true,"confidence"
+
+$ kubectl logs -n rahbar -l app=api --tail=200 | grep "cache invalidated"
+{"ts": "2026-11-09T03:30:12Z", "level": "INFO", "logger": "rahbar.cache", "msg": "cache invalidated after re-index", "request_id": "59c110b76d7ffeac8257cc81ec9023cb", "generation": "rahbar-g20261109032937", "deleted_keys": 1}
+$ kubectl exec -n rahbar deploy/redis -- redis-cli KEYS "rahbar:cache:*"   (only the new generation is left)
+rahbar:cache:rahbar-g20261109032937
+
+$ kubectl get pods -n rahbar -l app=api   (same pods, older now: no redeploy, no restart)
+NAME                   READY   STATUS    RESTARTS   AGE
+api-7dd86944b4-28nrf   1/1     Running   0          14m
+api-7dd86944b4-45knc   1/1     Running   0          14m
+api-7dd86944b4-x54n2   1/1     Running   0          14m

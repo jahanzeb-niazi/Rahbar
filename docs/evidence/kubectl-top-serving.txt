@@ -1,0 +1,8 @@
+# kubectl top pods -n rahbar --containers  (2026-11-08T14:51:49Z, serving after the golden-set eval)
+POD                      NAME     CPU(cores)   MEMORY(bytes)   
+api-dc7b45f56-2tksb      api      5m           70Mi            
+api-dc7b45f56-fht7q      api      5m           92Mi            
+api-dc7b45f56-jpkvz      api      5m           70Mi            
+chroma-0                 chroma   3m           48Mi            
+redis-78bb8c7f89-c9pj4   redis    14m          6Mi             
+ui-7b77f894b7-9zxm7      ui       1m           2Mi             

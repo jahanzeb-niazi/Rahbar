@@ -1,0 +1,35 @@
+# Embedding pin guard (section 4.3): the index was built with nomic-embed-text; the api is
+# restarted with EMBED_MODEL=all-minilm and must refuse to serve. 2026-11-09T03:14:35Z
+
+$ kubectl patch configmap rahbar-config -n rahbar -p {"data":{"EMBED_MODEL":"all-minilm"}}
+configmap/rahbar-config patched
+$ kubectl rollout restart deploy/api -n rahbar
+deployment.apps/api restarted
+
+$ kubectl get pods -n rahbar -l app=api   (new pod never becomes READY; maxUnavailable 0 keeps the old ones serving)
+NAME                   READY   STATUS    RESTARTS   AGE
+api-674c5dc87-2rggx    1/1     Running   0          97s
+api-674c5dc87-fjdhp    1/1     Running   0          79s
+api-674c5dc87-xmrql    1/1     Running   0          114s
+api-75d657b7f6-nwls6   0/1     Running   0          61s
+
+$ kubectl logs api-75d657b7f6-nwls6 -n rahbar | grep readiness
+{"ts": "2026-11-09T03:14:45Z", "level": "ERROR", "logger": "rahbar.health", "msg": "not ready", "request_id": "fd45aa17cf6f4dd3b0aaaa1462f58221", "failed": {"embed_model": "embedding model mismatch: the index was built with 'nomic-embed-text' (dimension 768) but this API has EMBED_MODEL='all-minilm'; re-index or restore the ConfigMap"}}
+
+$ kubectl describe pod api-75d657b7f6-nwls6 -n rahbar | grep Readiness
+  Warning  Unhealthy  64s (x2 over 65s)  kubelet            spec.containers{api}: Readiness probe failed: Get "http://10.244.120.101:8000/readyz": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+  Warning  Unhealthy  5s (x6 over 55s)   kubelet            spec.containers{api}: Readiness probe failed: HTTP probe failed with statuscode: 503
+
+$ kubectl exec api-75d657b7f6-nwls6 -n rahbar -- python -c <GET /readyz>
+503 {"status":"not ready","failed":["embed_model"],"checks":{"chroma":"ok","collection":"ok","embed_model":"embedding model mismatch: the index was built with 'nomic-embed-text' (dimension 768) but this API has EMBED_MODEL='all-minilm'; re-index or restore the ConfigMap","redis":"ok"}}
+
+# restore
+$ kubectl patch configmap rahbar-config -n rahbar -p {"data":{"EMBED_MODEL":"nomic-embed-text"}} && kubectl rollout restart deploy/api -n rahbar
+configmap/rahbar-config patched
+deployment.apps/api restarted
+deployment "api" successfully rolled out
+NAME                   READY   STATUS        RESTARTS   AGE
+api-674c5dc87-2rggx    1/1     Terminating   0          2m44s
+api-7dd86944b4-28nrf   1/1     Running       0          35s
+api-7dd86944b4-45knc   1/1     Running       0          18s
+api-7dd86944b4-x54n2   1/1     Running       0          53s
