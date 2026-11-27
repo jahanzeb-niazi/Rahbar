@@ -37,7 +37,7 @@ switch ($Action) {
             $revision = kubectl -n $namespace get deployment api-candidate -o 'jsonpath={.metadata.generation}'
             $job.metadata | Add-Member -MemberType NoteProperty -Name annotations -Value ([pscustomobject]@{'ragops/candidate-generation' = [string]$revision}) -Force
         }
-        $job.spec.template.spec.containers[0].env = @(
+        $job.spec.template.spec.containers[0] | Add-Member -MemberType NoteProperty -Name env -Value @(
             @{name='EVAL_API'; value=$Endpoint},
             @{name='EVAL_NAME'; value=$Name},
             @{name='EVAL_REFERENCE'; value=$Reference},
@@ -53,7 +53,7 @@ switch ($Action) {
         $job.spec.template.spec.containers[0].args = @(
             'exec python /app/eval/assignment3.py coverage --ollama "$OLLAMA_URL" --model "$EMBED_MODEL" --golden "/app/eval/$EVAL_GOLDEN" --out /lake/results'
         )
-        $job.spec.template.spec.containers[0].env = @(@{name='EVAL_GOLDEN'; value=$Golden})
+        $job.spec.template.spec.containers[0] | Add-Member -MemberType NoteProperty -Name env -Value @(@{name='EVAL_GOLDEN'; value=$Golden})
         Apply-Job $job
     }
     release {
