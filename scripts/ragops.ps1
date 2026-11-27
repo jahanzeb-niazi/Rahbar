@@ -72,7 +72,7 @@ switch ($Action) {
         $result = kubectl -n $namespace logs "job/$Name"
         if ('GATE PASS' -notin $result) { throw 'Candidate evaluation has no passing release gate.' }
         $candidate = kubectl -n $namespace get deployment api-candidate -o json | ConvertFrom-Json
-        if ($job.metadata.annotations['ragops/candidate-generation'] -ne [string]$candidate.metadata.generation) {
+        if ($job.metadata.annotations.'ragops/candidate-generation' -ne [string]$candidate.metadata.generation) {
             throw 'The candidate Deployment changed after this evaluation was started.'
         }
         $candidateEnv = @{}
