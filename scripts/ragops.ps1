@@ -21,7 +21,7 @@ switch ($Action) {
     ingest {
         if (!$Name) { throw 'Specify a unique Job name with -Name.' }
         $job = kubectl -n $namespace create job $Name --from=cronjob/ragops-ingest --dry-run=client -o json |
-            ConvertFrom-Json -AsHashtable
+            ConvertFrom-Json
         $container = $job.spec.template.spec.containers[0]
         if ($Batch) { $container.env += @{name='RAGOPS_BATCH'; value=$Batch} }
         if ($Collection) { $container.env += @{name='CHROMA_COLLECTION'; value=$Collection} }
@@ -31,7 +31,7 @@ switch ($Action) {
     eval {
         if (!$Name) { throw 'Specify a unique Job name with -Name.' }
         $job = kubectl create --dry-run=client -f (Join-Path $root 'k8s/eval-job.yaml') -o json |
-            ConvertFrom-Json -AsHashtable
+            ConvertFrom-Json
         $job.metadata.name = $Name
         if ($Endpoint -eq 'http://api-candidate:8000') {
             $revision = kubectl -n $namespace get deployment api-candidate -o 'jsonpath={.metadata.generation}'
@@ -48,7 +48,7 @@ switch ($Action) {
     coverage {
         if (!$Name) { throw 'Specify a unique Job name with -Name.' }
         $job = kubectl create --dry-run=client -f (Join-Path $root 'k8s/eval-job.yaml') -o json |
-            ConvertFrom-Json -AsHashtable
+            ConvertFrom-Json
         $job.metadata.name = $Name
         $job.spec.template.spec.containers[0].args = @(
             'exec python /app/eval/assignment3.py coverage --ollama "$OLLAMA_URL" --model "$EMBED_MODEL" --golden "/app/eval/$EVAL_GOLDEN" --out /lake/results'
@@ -58,7 +58,7 @@ switch ($Action) {
     }
     release {
         if (!$Name) { throw 'Specify the passing candidate evaluation Job with -Name.' }
-        $job = kubectl -n $namespace get job $Name -o json | ConvertFrom-Json -AsHashtable
+        $job = kubectl -n $namespace get job $Name -o json | ConvertFrom-Json
         $envValues = @{}
         foreach ($variable in $job.spec.template.spec.containers[0].env) {
             $envValues[$variable.name] = $variable.value
@@ -71,7 +71,7 @@ switch ($Action) {
         }
         $result = kubectl -n $namespace logs "job/$Name"
         if ('GATE PASS' -notin $result) { throw 'Candidate evaluation has no passing release gate.' }
-        $candidate = kubectl -n $namespace get deployment api-candidate -o json | ConvertFrom-Json -AsHashtable
+        $candidate = kubectl -n $namespace get deployment api-candidate -o json | ConvertFrom-Json
         if ($job.metadata.annotations['ragops/candidate-generation'] -ne [string]$candidate.metadata.generation) {
             throw 'The candidate Deployment changed after this evaluation was started.'
         }
