@@ -1,0 +1,50 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ragops-ingest
+  namespace: rahbar
+spec:
+  schedule: "0 3 * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      template:
+        metadata:
+          labels:
+            app: indexer
+        spec:
+          automountServiceAccountToken: false
+          enableServiceLinks: false
+          restartPolicy: Never
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            fsGroup: 10001
+          containers:
+            - name: indexer
+              image: rahbar-indexer:dev
+              imagePullPolicy: IfNotPresent
+              command: ["/bin/sh", "-ec"]
+              args:
+                - exec python /app/eval/ingest_job.py
+              envFrom:
+                - configMapRef:
+                    name: rahbar-config
+              env:
+                - name: FETCH_CORPUS
+                  value: "false"
+                - name: CORPUS_DIR
+                  value: /lake/input
+                - name: RAGOPS_LAKE
+                  value: /lake
+              resources:
+                requests: {cpu: 250m, memory: 256Mi}
+                limits: {cpu: "2", memory: 1Gi}
+              volumeMounts:
+                - name: ragops
+                  mountPath: /lake
+          volumes:
+            - name: ragops
+              persistentVolumeClaim:
+                claimName: ragops

@@ -86,6 +86,10 @@ def run_pipeline(settings: IndexerSettings) -> int:
     from .extract import extract
     from .store import store
 
+    if lake := os.environ.get("RAGOPS_LAKE"):
+        from .verified import run
+
+        return run(settings, Path(lake), json.loads(os.environ.get("RAGOPS_RESTORE", "{}")))
     documents = discover(settings.corpus_dir)
     if not documents:
         raise SystemExit(f"no documents found in {settings.corpus_dir}")

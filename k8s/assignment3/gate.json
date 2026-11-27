@@ -1,0 +1,7 @@
+{
+  "recall_at_5": {"max_drop": 0.02},
+  "faithfulness_proxy": {"min": 0.6},
+  "latency_p95": {"max": 60},
+  "abstention_correctness": {"max_drop": 0},
+  "citation_validity": {"min": 1}
+}

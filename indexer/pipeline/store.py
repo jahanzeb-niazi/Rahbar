@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import time
 from typing import Any
+from uuid import uuid4
 
 from .config import IndexerSettings
 from .models import Chunk
@@ -46,7 +47,7 @@ def store(chunks: list[Chunk], vectors: list[list[float]], settings: IndexerSett
         raise ValueError("duplicate chunk ids")
     client = client or get_client(settings)
     base = settings.collection
-    name = f"{generation_prefix(base)}{time.strftime('%Y%m%d%H%M%S', time.gmtime())}"
+    name = f"{generation_prefix(base)}{uuid4().hex}"
     collection = client.create_collection(
         name=name,
         metadata={

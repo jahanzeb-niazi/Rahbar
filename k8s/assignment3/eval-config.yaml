@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ragops-eval-config
+  namespace: rahbar
+data:
+  EVAL_API: http://api:8000
+  EVAL_NAME: baseline
+  EVAL_REFERENCE: ""
+  EVAL_GOLDEN: golden.jsonl

@@ -1,0 +1,49 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../overlays/dev
+  - storage.yaml
+  - ingestion.yaml
+  - candidate-service.yaml
+  - candidate.yaml
+  - eval-config.yaml
+configMapGenerator:
+  - name: ragops-gate
+    namespace: rahbar
+    files:
+      - gate.json
+generatorOptions:
+  disableNameSuffixHash: true
+patches:
+  - target:
+      kind: Service
+      name: api
+    patch: |-
+      - op: add
+        path: /spec/selector/traffic
+        value: live
+  - target:
+      kind: NetworkPolicy
+      name: allow-ollama-egress
+    patch: |-
+      - op: add
+        path: /spec/podSelector/matchExpressions/0/values/-
+        value: eval
+  - target:
+      kind: Deployment
+      name: api
+    path: trace-patch.yaml
+  - target:
+      kind: Job
+      name: indexer
+    patch: |-
+      - op: add
+        path: /spec/suspend
+        value: true
+  - target:
+      kind: CronJob
+      name: reindex
+    patch: |-
+      - op: add
+        path: /spec/suspend
+        value: true

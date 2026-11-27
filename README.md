@@ -192,3 +192,7 @@ k8s/        base/ and overlays/{dev,prod}/
 scripts/    check_submission.py, e2e-up.sh (CI/CD cluster bring-up)
 docs/       ADRs, pipeline, failure analysis, engineering notes, evidence/
 ```
+
+## Assignment 03
+
+The [Kubernetes runbook](k8s/README.md) contains the exact commands for Parts A–F, from ingestion and two-run evaluation to coverage, trace inspection and rollback. The [report draft](docs/Assignment-03-report.pdf) records the implementation and outstanding evidence.

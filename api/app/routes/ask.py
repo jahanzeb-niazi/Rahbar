@@ -20,7 +20,8 @@ def ask(body: AskRequest, request: Request, response: Response) -> AskResponse:
     state = request.app.state
     try:
         result = answer_question(body.question, state.retriever, state.provider,
-                                 state.settings, state.cache)
+                                 state.settings, state.cache,
+                                 bypass_cache=request.headers.get("X-RAGOps-Eval") == "1")
     except PinMismatchError as exc:
         log.error("refusing to answer: embedding pin mismatch", extra={"conflict": str(exc)})
         raise HTTPException(status_code=503, detail="the index and the API disagree on the "

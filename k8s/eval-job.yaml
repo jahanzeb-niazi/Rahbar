@@ -1,0 +1,56 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ragops-eval
+  namespace: rahbar
+spec:
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        app: eval
+        ragops-role: eval
+    spec:
+      automountServiceAccountToken: false
+      enableServiceLinks: false
+      restartPolicy: Never
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        fsGroup: 10001
+      containers:
+        - name: eval
+          image: rahbar-indexer:dev
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/sh", "-ec"]
+          args:
+            - |
+              set -- --api "$EVAL_API" --ollama "$OLLAMA_URL" --model "$EMBED_MODEL"
+              set -- "$@" --out /lake/results --name "$EVAL_NAME" --golden "/app/eval/$EVAL_GOLDEN"
+              if [ -n "$EVAL_REFERENCE" ]; then
+                baseline=$(ls -t /lake/results/*-"$EVAL_REFERENCE".json | head -n 1)
+                test -n "$baseline"
+                set -- "$@" --baseline "$baseline" --thresholds /thresholds/gate.json
+              fi
+              exec python /app/eval/assignment3.py suite "$@"
+          envFrom:
+            - configMapRef:
+                name: rahbar-config
+            - configMapRef:
+                name: ragops-eval-config
+          resources:
+            requests: {cpu: 100m, memory: 64Mi}
+            limits: {cpu: 500m, memory: 256Mi}
+          volumeMounts:
+            - name: ragops
+              mountPath: /lake
+            - name: thresholds
+              mountPath: /thresholds
+              readOnly: true
+      volumes:
+        - name: ragops
+          persistentVolumeClaim:
+            claimName: ragops
+        - name: thresholds
+          configMap:
+            name: ragops-gate

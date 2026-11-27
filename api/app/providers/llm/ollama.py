@@ -35,7 +35,7 @@ class OllamaProvider:
                 "format": Answer.model_json_schema(),
                 "stream": False,
                 "options": {"temperature": self.settings.temperature, "num_ctx": NUM_CTX,
-                            "num_predict": NUM_PREDICT},
+                            "num_predict": NUM_PREDICT, "seed": 42},
             },
         )
         r.raise_for_status()
