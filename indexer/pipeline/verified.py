@@ -111,9 +111,9 @@ def run(settings: IndexerSettings, lake: Path, restores: dict[str, str]) -> int:
                     "centroid": centroid, "chunks": [], "vectors": [],
                 })
 
-    active = {}
-    for record in accepted.values():
-        doc_id, version = record["doc_id"], record["version"]
+    active: dict[str, str] = {}
+    for accepted_record in accepted.values():
+        doc_id, version = accepted_record["doc_id"], accepted_record["version"]
         active[doc_id] = max(active.get(doc_id, ""), version, key=version_order)
     for doc_id, version in restores.items():
         if not any(record["doc_id"] == doc_id and record["version"] == version

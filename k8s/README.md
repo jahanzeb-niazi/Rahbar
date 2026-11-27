@@ -10,7 +10,7 @@ minikube addons enable metrics-server
 docker build -t rahbar-api:dev api
 docker build -t rahbar-ui:dev ui
 docker build -t rahbar-indexer:dev -f indexer/Dockerfile .
-minikube image load rahbar-api:dev rahbar-ui:dev rahbar-indexer:dev
+'rahbar-api:dev','rahbar-ui:dev','rahbar-indexer:dev' | ForEach-Object { minikube image load  }
 kubectl apply -k k8s/assignment3
 ```
 

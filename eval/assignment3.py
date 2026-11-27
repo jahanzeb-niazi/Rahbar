@@ -190,17 +190,23 @@ def main():
     delta = {key: second["metrics"][key] - value for key, value in first["metrics"].items()}
     thresholds = json.loads(Path(args.thresholds).read_text(encoding="utf-8"))
     failures = []
+    versus_baseline = {}
     if args.baseline:
         reference = json.loads(Path(args.baseline).read_text(encoding="utf-8"))["runs"][0]["metrics"]
+        versus_baseline = {key: value - reference[key] for key, value in first["metrics"].items()}
         for number, run in enumerate((first, second), 1):
             failures.extend(f"run {number}: {reason}" for reason in gate(run["metrics"], reference, thresholds))
     output({"runs": [first, second], "delta": delta, "gate_checked": bool(args.baseline),
-            "gate_failures": failures, "configuration": {"model": args.model, "seed": 42,
+            "gate_failures": failures, "first_run_delta_from_baseline": versus_baseline,
+            "configuration": {"model": args.model, "seed": 42,
             "name": args.name, "golden": Path(args.golden).name, "api": args.api}},
            args.out, args.name)
     for key, value in first["metrics"].items():
         print(f"{key:32} {value:9.4f} {second['metrics'][key]:9.4f} {delta[key]:+9.4f}")
     if args.baseline:
+        print("FIRST RUN DELTA FROM BASELINE")
+        for key, value in versus_baseline.items():
+            print(f"{key:32} {value:+9.4f}")
         print("GATE FAIL" if failures else "GATE PASS")
         for failure in failures:
             print(failure)

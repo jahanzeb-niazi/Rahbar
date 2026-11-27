@@ -21,8 +21,8 @@
 {"id":"h1","origin":"synthetic","hard":true,"question":"How many lectures do I need to show up for before taking finals?","expect":"80","relevant":[{"source":"academic-rules-2026.md","page":1,"section":"1. Attendance"}]}
 {"id":"h2","origin":"synthetic","hard":true,"question":"Can a doctor's documentation excuse absences beyond the allowance?","expect":"medical","relevant":[{"source":"academic-rules-2026.md","page":1,"section":"1. Attendance"}]}
 {"id":"h3","origin":"synthetic","hard":true,"question":"What appears on my record if I skipped too many classes?","expect":"FA","relevant":[{"source":"academic-rules-2026.md","page":1,"section":"1. Attendance"}]}
-{"id":"h4","origin":"synthetic","hard":true,"question":"Under which CGPA do I get a warning after a regular term?","expect":"2.00","relevant":[{"source":"academic-rules-2026.md","page":1,"section":"2. Academic warning"}]}
-{"id":"h5","origin":"synthetic","hard":true,"question":"How long can I stay on academic warning before being dropped?","expect":"three","relevant":[{"source":"academic-rules-2026.md","page":1,"section":"2. Academic warning"}]}
+{"id":"h4","origin":"synthetic","hard":true,"question":"What CGPA triggers a warning, and can the same student repeat a passed course to improve it?","expect":"2.00","relevant":[{"source":"academic-rules-2026.md","page":1,"section":"2. Academic warning"},{"page":1,"source":"academic-rules-2026.md","section":"3. Repeating a course"}]}
+{"id":"h5","origin":"synthetic","hard":true,"question":"How many consecutive terms on academic warning lead to dismissal, and what attendance is needed to sit finals?","expect":"three","relevant":[{"source":"academic-rules-2026.md","page":1,"section":"2. Academic warning"},{"page":1,"source":"academic-rules-2026.md","section":"1. Attendance"}]}
 {"id":"residence1","origin":"synthetic","question":"How do I apply for a hostel room?","must_abstain":true}
 {"id":"residence2","origin":"synthetic","question":"What are dorm check-in hours?","must_abstain":true}
 {"id":"transport1","origin":"synthetic","question":"Does a shuttle stop at the railway station?","must_abstain":true}

@@ -36,9 +36,12 @@ def main():
             stages.setdefault(stage, []).append(seconds)
     scores = [row["retrieved"][0]["score"] for row in rows if row["retrieved"] and row["cache"] != "hit"]
     lookups = [row for row in rows if row["cache"] in ("hit", "miss")]
+    completed = [row for row in rows if row.get("status", 200) == 200]
     print(json.dumps({
         "queries": len(rows),
-        "abstention_rate": sum(not row["response"]["answered_from_context"] for row in rows) / max(1, len(rows)),
+        "failed_queries": len(rows) - len(completed),
+        "abstention_rate": sum(not row["response"]["answered_from_context"] for row in completed)
+                           / max(1, len(completed)),
         "cache_hit_rate": sum(row["cache"] == "hit" for row in lookups) / max(1, len(lookups)),
         "stage_p95_seconds": {stage: sorted(values)[math.ceil(.95 * len(values)) - 1]
                               for stage, values in stages.items()},

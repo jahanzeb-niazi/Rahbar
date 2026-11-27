@@ -20,3 +20,6 @@ ui
 indexer/tests
 .env
 *secret*
+eval/results
+traces
+Assignment_03.pdf
