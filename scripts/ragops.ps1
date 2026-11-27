@@ -35,7 +35,7 @@ switch ($Action) {
         $job.metadata.name = $Name
         if ($Endpoint -eq 'http://api-candidate:8000') {
             $revision = kubectl -n $namespace get deployment api-candidate -o 'jsonpath={.metadata.generation}'
-            $job.metadata.annotations = @{'ragops/candidate-generation' = [string]$revision}
+            $job.metadata | Add-Member -MemberType NoteProperty -Name annotations -Value ([pscustomobject]@{'ragops/candidate-generation' = [string]$revision}) -Force
         }
         $job.spec.template.spec.containers[0].env = @(
             @{name='EVAL_API'; value=$Endpoint},
