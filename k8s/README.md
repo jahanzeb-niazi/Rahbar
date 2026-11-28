@@ -117,4 +117,15 @@ kubectl -n rahbar cp "${pod}:/lake/results/." eval/results
 kubectl -n rahbar cp "${pod}:/lake/traces/." traces
 ```
 
+For a sampled per-container peak while an ingestion or evaluation Job is active, start
+the Job first and run the collector in another PowerShell window:
+
+```powershell
+./scripts/capture-k8s-resources.ps1 -Seconds 1200 -IntervalSeconds 15
+```
+
+It writes timestamped raw samples and per-pod/container CPU and memory peaks under
+`eval/results/`. The configured requests and limits are in the Kubernetes manifests;
+`kubectl top` readings are observed usage and should be reported separately.
+
 After undo, ask a fresh question with header `X-RAGOps-Eval: 1` and find its trace in the live pod logs. Capture collection and embedding model version. To demonstrate an operationally bad release, deploy a nonexistent collection manually in a demo-only exercise, confirm the rollout cannot become ready, then undo. Keep the bad candidate evaluation separate and do not promote its failed revision. Record live resource use while Jobs are active and capture the required terminal screenshots from your own cluster. Commit generated JSON and JSONL under `eval/results/` and `traces/` after reviewing the recorded queries and contexts.
