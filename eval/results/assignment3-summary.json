@@ -1,0 +1,224 @@
+{
+  "metadata": {
+    "project": "RAHBAR Assignment 03 RAGOps",
+    "date": "2026-11-28",
+    "cluster": "Minikube v1.37.0 on Docker Desktop, Kubernetes v1.36.1 client",
+    "llm": "llama3.2:3b via Ollama 0.40.18",
+    "embedding_model": "nomic-embed-text",
+    "provenance": "Values transcribed from the captured Kubernetes Job logs and outputs; raw timestamped Job result JSON remained on the cluster PVC."
+  },
+  "baseline": {
+    "paraphrase_cosine": 0.7746,
+    "unrelated_cosine": 0.5357,
+    "cosine_gap": 0.2389,
+    "embedding_seconds_per_text": [
+      0.0458,
+      0.069
+    ],
+    "embedding_max_difference": 0.0,
+    "recall_at_3": [
+      0.95,
+      0.95
+    ],
+    "recall_at_5": [
+      1.0,
+      1.0
+    ],
+    "mrr": [
+      0.9625,
+      0.9625
+    ],
+    "noisy_mrr": [
+      0.96,
+      0.96
+    ],
+    "ndcg_at_5": [
+      0.9715,
+      0.9715
+    ],
+    "noisy_ndcg_at_5": [
+      0.9693,
+      0.9693
+    ],
+    "faithfulness_proxy": [
+      0.65,
+      0.65
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ],
+    "latency_p50_seconds": [
+      15.5027,
+      13.2613
+    ],
+    "latency_p95_seconds": [
+      38.1216,
+      34.601
+    ]
+  },
+  "candidate_top_k_6": {
+    "recall_at_3": [
+      0.95,
+      0.95
+    ],
+    "recall_at_5": [
+      1.0,
+      1.0
+    ],
+    "mrr": [
+      0.9625,
+      0.9625
+    ],
+    "ndcg_at_5": [
+      0.9715,
+      0.9715
+    ],
+    "faithfulness_proxy": [
+      0.65,
+      0.65
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ],
+    "latency_p50_seconds": [
+      11.5763,
+      12.7173
+    ],
+    "latency_p95_seconds": [
+      30.8577,
+      31.2957
+    ],
+    "gate": "pass"
+  },
+  "negative_control_top_k_1": {
+    "recall_at_3": [
+      0.9,
+      0.9
+    ],
+    "recall_at_5": [
+      0.9,
+      0.9
+    ],
+    "faithfulness_proxy": [
+      0.7,
+      0.7
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ],
+    "latency_p95_seconds": [
+      15.5386,
+      15.7648
+    ],
+    "gate": "fail: recall_at_5 drop 0.10 exceeded 0.02"
+  },
+  "drift_same_golden": {
+    "recall_at_3": [
+      0.4,
+      0.4
+    ],
+    "recall_at_5": [
+      0.4,
+      0.4
+    ],
+    "mrr": [
+      0.4,
+      0.4
+    ],
+    "ndcg_at_5": [
+      0.4,
+      0.4
+    ],
+    "faithfulness_proxy": [
+      0.35,
+      0.35
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ]
+  },
+  "drift_updated_golden": {
+    "recall_at_3": [
+      0.9524,
+      0.9524
+    ],
+    "recall_at_5": [
+      1.0,
+      1.0
+    ],
+    "mrr": [
+      0.9643,
+      0.9643
+    ],
+    "ndcg_at_5": [
+      0.9729,
+      0.9729
+    ],
+    "faithfulness_proxy": [
+      0.6667,
+      0.6667
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ]
+  },
+  "coverage": {
+    "before_percent": 47.5,
+    "after_percent": 62.5,
+    "threshold_percent": 85.0,
+    "live_queries": 40,
+    "new_questions_added": 6
+  },
+  "verification_batch_b": {
+    "documents_seen": 15,
+    "indexed": 8,
+    "archived": 2,
+    "quarantined": 5,
+    "chunks_embedded": 10,
+    "verification_embeddings": 8,
+    "quarantine_reasons": {
+      "exact_duplicates": 2,
+      "near_duplicate": 1,
+      "truncated_incomplete": 1,
+      "missing_title": 1
+    }
+  },
+  "incremental_update": {
+    "unchanged_batch_a_chunks_embedded": 0,
+    "deleted_fees_chunks_remaining": 0,
+    "restore_2026_chunks_embedded": 3
+  },
+  "evidence_gaps": [
+    "No screenshot of the unchanged Batch A repeat; result was previously shared in chat.",
+    "No screenshot of kubectl get all,pvc,configmap,cronjob,job; provided status screenshot shows deployments and pods.",
+    "No post-rollback trace screenshot; trace JSONL is retained, and rollback status is shown separately.",
+    "No measured per-pod resource peak during Job execution; report lists configured requests/limits and one Docker host snapshot.",
+    "All current golden questions are labelled synthetic; the required eight hand-authored questions and human review are not evidenced.",
+    "Coverage improved but remained below the configured 85 percent target."
+  ]
+}
