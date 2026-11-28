@@ -252,8 +252,8 @@ def build_summary():
             "pods": {"total": 18, "running_ready": 7, "completed": 7, "error": 4},
             "services": 5, "bound_pvcs": 3, "configmaps": 4,
             "cronjobs": {"ragops-ingest": "active", "reindex": "suspended"},
-            "hpa_api": {"current_cpu": "3%", "target_cpu": "70%", "min_replicas": 3, "max_replicas": 8, "replicas": 3},
-            "screenshot_received": False,
+            "hpa_api": {"current_cpu": "4%", "target_cpu": "70%", "min_replicas": 3, "max_replicas": 8, "replicas": 3},
+            "screenshot_received": True,
         },
         "resource_snapshot": {
             "source": "kubectl top pods -n rahbar --containers; kubectl top nodes",
@@ -278,7 +278,7 @@ def build_summary():
         },
         "evidence_gaps": [
             "No screenshot of the unchanged Batch A repeat; result was previously shared in chat.",
-            "Full namespace inventory output was provided as terminal text: 4 deployments ready, 7 running/ready pods, 7 completed Job pods, 4 historical Error Job pods, 3 bound PVCs, and HPA at 3% CPU. A screenshot of the full inventory command/output is still missing from the appendix.",
+            "Full namespace inventory is shown in Appendix F4; the HPA row is near the screenshot's bottom edge, and its full output was also supplied as terminal text.",
             "No post-rollback trace screenshot; trace JSONL is retained, and rollback status is shown separately.",
             "Per-container kubectl top snapshot is captured in Appendix F2 (API 76–81 MiB, candidate 72 MiB, Chroma 76 MiB, Redis 6 MiB, UI 2 MiB; node 315m CPU/1942Mi memory). It is point-in-time, not a peak during Job execution.",
             "Eight user-authored questions and source-verified answers are in eval/golden.jsonl and eval/human-question-answer-key.md, but they have not been evaluated; the current fixture batches omit most official source documents. Q1 is scored as unanswerable because the fee page does not state a duplicate-degree fee.",
@@ -444,7 +444,7 @@ def build():
                   ["Redis / UI", "Cache PVC / UI Deployment", "20m / 32Mi; 200m / 128Mi / 10m /16Mi; 100m /64Mi"],
               ], [26 * mm, 73 * mm, 75 * mm]),
               p("At capture, live API was 3/3 Ready and candidate 1/1, with Chroma, Redis and UI Running. One Docker Desktop snapshot during heavy work showed the Minikube container using 2.063 GiB of its 4 GiB limit and 112% CPU. A later kubectl top snapshot showed API replicas at 76–81 MiB, candidate 72 MiB, Chroma 76 MiB, Redis 6 MiB and UI 2 MiB; node usage was 315m CPU (2%) and 1,942 MiB memory (25%). Both are point-in-time observations, not per-Job peaks; Appendix F2 shows the latter.", "small"),
-              p("A later namespace inventory supplied in terminal text showed api 3/3, api-candidate 1/1, Redis 1/1 and UI 1/1; 7 pods Running/Ready, 7 completed Job pods, 4 historical Error Job pods, all 3 PVCs Bound, and the API HPA at 3% CPU with a 70% target (3–8 replicas). The command output is recorded in the work log; an appendix screenshot of the full inventory was not supplied.", "small"),
+              p("A later namespace inventory showed api 3/3, api-candidate 1/1, Redis 1/1 and UI 1/1; 7 pods Running/Ready, 7 completed Job pods, 4 historical Error Job pods, all 3 PVCs Bound, and the API HPA at 4% CPU with a 70% target (3–8 replicas). See Appendix F4; the HPA values are also recorded from the complete terminal output.", "small"),
               p("Table 2 qualities", "h2"),
               table([
                   ["Quality", "Measurement / threshold", "Evidence"],
@@ -459,7 +459,7 @@ def build():
               p("(e) The hardest paper idea was coupling a changing data lake with a stable test set. We used separate candidate collections and updated labels to expose drift. (f) Kubernetes responsibilities: Job writes vectors, CronJob schedules ingestion, PVC stores data/results/traces, ConfigMap carries thresholds, Deployments serve API/UI, Service routes traffic, StatefulSet preserves Chroma identity and storage, and rollout status/undo controls release."),
               p("Contribution and AI statement", "h2"),
               p("Faizan Ahmed executed the local Kubernetes experiments, captured the submitted evidence and maintained the Assignment 03 branch fixes. Jahanzeb Arfan's Assignment 02 RAHBAR system is the starting point; specific Assignment 03 task allocation was not independently provided. The five local Assignment 03 commits currently visible in the branch are attributed to Faizan Ahmed. AI assistance was used for code and report drafting; the group must review the implementation, metrics and explanations and be prepared to explain them at the demo.", "small"),
-              p("Conclusion: top-k=6 passed its baseline gate and the failed live configuration was rolled back. Batch verification, tracing and drift experiments ran on Kubernetes. Eight human-authored questions with source-verified answers are included, but remain unevaluated until their official sources are indexed in the cluster; Q1 correctly requires abstention because the fee is absent from the source. Eight synthetic questions still need a documented human review. Other evidence gaps are a screenshot of the unchanged run, a screenshot of the full namespace inventory, a post-rollback trace screenshot, and per-Job peak resource readings. Coverage is still below 85%.", "small"),
+              p("Conclusion: top-k=6 passed its baseline gate and the failed live configuration was rolled back. Batch verification, tracing and drift experiments ran on Kubernetes. Eight human-authored questions with source-verified answers are included, but remain unevaluated until their official sources are indexed in the cluster; Q1 correctly requires abstention because the fee is absent from the source. Eight synthetic questions still need a documented human review. Other evidence gaps are a screenshot of the unchanged run, a post-rollback trace screenshot, and per-Job peak resource readings. Coverage is still below 85%.", "small"),
               p("References: Assignment 03 handout, CS4032 Fall 2026. Xiwei Xu et al., RAGOps: Operating and Managing Retrieval-Augmented Generation Pipelines, arXiv:2506.03401 (2025), https://arxiv.org/abs/2506.03401.", "tiny"),
               PageBreak()]
 
@@ -478,6 +478,7 @@ def build():
         ("A2-Restore", "Restoring academic-rules 2026 archives 2027 and indexes the restored version.", "A2-restore-archived-version.png"),
         ("F1", "Kubernetes deployment and pod status at capture: live API 3/3 Ready, candidate 1/1 Ready.", "F1-kubernetes-deployment-status.png"),
         ("F2", "kubectl top per-container and node resource snapshot. Values are instantaneous, not Job peaks.", "F2-kubernetes-resource-snapshot.png"),
+        ("F4", "Full namespace inventory: Deployments, Pods, Services, Jobs, CronJobs, PVCs, ConfigMaps and HPA.", "F4-kubernetes-namespace-inventory.png"),
         ("F3-Bad", "Bad live rollout using a nonexistent collection fails readiness and times out.", "F3-bad-rollout-timeout.png"),
         ("F3-Undo", "kubectl rollout undo and successful live API rollout status.", "F3-rollout-undo.png"),
         ("D1-Copy", "Trace JSONL copied from the live pod to the local trace folder.", "D1-copy-trace.png"),
