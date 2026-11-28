@@ -218,7 +218,8 @@
     "No screenshot of kubectl get all,pvc,configmap,cronjob,job; provided status screenshot shows deployments and pods.",
     "No post-rollback trace screenshot; trace JSONL is retained, and rollback status is shown separately.",
     "No measured per-pod resource peak during Job execution; report lists configured requests/limits and one Docker host snapshot.",
-    "All current golden questions are labelled synthetic; the required eight hand-authored questions and human review are not evidenced.",
+    "Eight user-authored questions and draft answers are recorded in eval/human-question-answer-key.md, but they have not yet been included in a rerun of the evaluation suite; Q1 and Q4 answer/source details and several PDF page/section keys still need source verification.",
+    "Human review of eight synthetic golden questions is still not recorded in the checklist.",
     "Coverage improved but remained below the configured 85 percent target."
   ]
 }

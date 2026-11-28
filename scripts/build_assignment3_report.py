@@ -261,7 +261,8 @@ def build_summary():
             "No screenshot of kubectl get all,pvc,configmap,cronjob,job; provided status screenshot shows deployments and pods.",
             "No post-rollback trace screenshot; trace JSONL is retained, and rollback status is shown separately.",
             "No measured per-pod resource peak during Job execution; report lists configured requests/limits and one Docker host snapshot.",
-            "All current golden questions are labelled synthetic; the required eight hand-authored questions and human review are not evidenced.",
+            "Eight user-authored questions and draft answers are recorded in eval/human-question-answer-key.md, but they have not yet been included in a rerun of the evaluation suite; Q1 and Q4 answer/source details and several PDF page/section keys still need source verification.",
+            "Human review of eight synthetic golden questions is still not recorded in the checklist.",
             "Coverage improved but remained below the configured 85 percent target.",
         ],
     }
@@ -334,7 +335,7 @@ def build():
 
     # Page 4: B.
     story += [p("3. Offline evaluation (Part B)", "h1"),
-              p("The suite records module, retrieval and answer-level measurements twice with seed 42. eval/golden.jsonl contains 25 questions and labels all 25 synthetic; eval/live.jsonl contains 40 queries. The assignment asks for at least eight hand-authored questions and human review of eight synthetic questions. Those contributions are not evidenced in the current files, so the question-origin requirement remains open."),
+              p("The suite records module, retrieval and answer-level measurements twice with seed 42. The captured scores below used the 25-question synthetic set in eval/golden.jsonl; they do not include the eight user-authored questions now documented in eval/human-question-answer-key.md. Those new questions have not been rerun. The answer/source for Q1 and Q4, and exact PDF page/section metadata for several questions, need verification against the indexed documents. Human review of eight synthetic questions also remains to be recorded."),
               table([
                   ["Level / metric", "Run 1", "Run 2", "Reading"],
                   ["Embedding paraphrase cosine", "0.7746", "0.7746", "Mean positive-pair similarity."],
@@ -437,7 +438,7 @@ def build():
               p("(e) The hardest paper idea was coupling a changing data lake with a stable test set. We used separate candidate collections and updated labels to expose drift. (f) Kubernetes responsibilities: Job writes vectors, CronJob schedules ingestion, PVC stores data/results/traces, ConfigMap carries thresholds, Deployments serve API/UI, Service routes traffic, StatefulSet preserves Chroma identity and storage, and rollout status/undo controls release."),
               p("Contribution and AI statement", "h2"),
               p("Faizan Ahmed executed the local Kubernetes experiments, captured the submitted evidence and maintained the Assignment 03 branch fixes. Jahanzeb Arfan's Assignment 02 RAHBAR system is the starting point; specific Assignment 03 task allocation was not independently provided. The five local Assignment 03 commits currently visible in the branch are attributed to Faizan Ahmed. AI assistance was used for code and report drafting; the group must review the implementation, metrics and explanations and be prepared to explain them at the demo.", "small"),
-              p("Conclusion: top-k=6 passed its baseline gate and the failed live configuration was rolled back. Batch verification, tracing and drift experiments ran on Kubernetes. Remaining evidence gaps are a screenshot of the unchanged run, the full namespace inventory, a post-rollback trace screenshot, per-pod resource peak measurements, and human-authored/reviewed golden questions. Coverage is still below 85%.", "small"),
+              p("Conclusion: top-k=6 passed its baseline gate and the failed live configuration was rolled back. Batch verification, tracing and drift experiments ran on Kubernetes. Eight human-authored questions and a draft answer key are now present, but their source metadata and two answer details need verification, the suite must be rerun with them, and eight synthetic questions still need a documented human review. Other evidence gaps are a screenshot of the unchanged run, the full namespace inventory, a post-rollback trace screenshot, and per-pod resource peak measurements. Coverage is still below 85%.", "small"),
               p("References: Assignment 03 handout, CS4032 Fall 2026. Xiwei Xu et al., RAGOps: Operating and Managing Retrieval-Augmented Generation Pipelines, arXiv:2506.03401 (2025), https://arxiv.org/abs/2506.03401.", "tiny"),
               PageBreak()]
 
