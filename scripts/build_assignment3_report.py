@@ -243,6 +243,9 @@ def build_summary():
         },
         "coverage": {"before_percent": 47.5, "after_percent": 62.5, "threshold_percent": 85.0,
                      "live_queries": 40, "new_questions_added": 6},
+        "golden_set": {"total_questions": 33, "human_authored_questions": 8,
+                       "human_rows_evaluated": False,
+                       "note": "The eight user-authored rows are source-verified but not rerun; current Kubernetes A/B fixture batches do not index most official source documents used by these questions."},
         "verification_batch_b": {
             "documents_seen": 15, "indexed": 8, "archived": 2, "quarantined": 5,
             "chunks_embedded": 10, "verification_embeddings": 8,
@@ -261,7 +264,7 @@ def build_summary():
             "No screenshot of kubectl get all,pvc,configmap,cronjob,job; provided status screenshot shows deployments and pods.",
             "No post-rollback trace screenshot; trace JSONL is retained, and rollback status is shown separately.",
             "No measured per-pod resource peak during Job execution; report lists configured requests/limits and one Docker host snapshot.",
-            "Eight user-authored questions and draft answers are recorded in eval/human-question-answer-key.md, but they have not yet been included in a rerun of the evaluation suite; Q1 and Q4 answer/source details and several PDF page/section keys still need source verification.",
+            "Eight user-authored questions and source-verified answers are in eval/golden.jsonl and eval/human-question-answer-key.md, but they have not been evaluated; the current fixture batches omit most official source documents. Q1 is scored as unanswerable because the fee page does not state a duplicate-degree fee.",
             "Human review of eight synthetic golden questions is still not recorded in the checklist.",
             "Coverage improved but remained below the configured 85 percent target.",
         ],
@@ -289,7 +292,7 @@ def build():
               ], [33 * mm, 28 * mm, 113 * mm]),
               Spacer(1, 4 * mm),
               p("Executive summary", "h2"),
-              p("This work adds a Kubernetes RAGOps loop to the existing RAHBAR system: ingestion verification, incremental index updates, offline evaluation, a gated top-k candidate, per-query trace records, and live query coverage checks. The local Minikube demo ran with Ollama using llama3.2:3b for generation and nomic-embed-text for embeddings. The top-k=6 candidate passed the configured quality gate on the baseline snapshot; the top-k=1 negative control failed recall@5. After Batch B changed the active policy, the old golden labels caused retrieval scores to fall; an updated golden set restored the measured retrieval scores. Coverage improved from 47.5% to 62.5%, but did not reach the 85% target."),
+              p("This work adds a Kubernetes RAGOps loop to the existing RAHBAR system: ingestion verification, incremental index updates, offline evaluation, a gated top-k candidate, per-query trace records, and live query coverage checks. The local Minikube demo ran with Ollama using llama3.2:3b for generation and nomic-embed-text for embeddings. The top-k=6 candidate passed the configured quality gate on the baseline snapshot; the top-k=1 negative control failed recall@5. After Batch B changed the active policy, the old golden labels caused retrieval scores to fall; an updated golden set restored the measured retrieval scores. Coverage improved from 47.5% to 62.5%, but did not reach the 85% target. Eight user-authored questions and source-checked expected answers are now included in the 33-row golden set, but those eight have not been evaluated because the current fixture jobs do not index most of their official sources."),
               note("Interpret results with the stated evidence limits: run values below are transcribed from Kubernetes Job logs and screenshots. The raw timestamped Job JSON files were not copied from the PVC. No numbers are invented to fill missing measurements.", AMBER),
               p("Implementation snapshot", "h2"),
               p("Repository: https://github.com/jahanzeb-niazi/Rahbar (Assignment 03 branch). The serving namespace is rahbar. At capture, the live API Deployment was 3/3 ready; api-candidate was 1/1 ready; Chroma, Redis and UI were Running. See Appendix F1."),
@@ -335,7 +338,7 @@ def build():
 
     # Page 4: B.
     story += [p("3. Offline evaluation (Part B)", "h1"),
-              p("The suite records module, retrieval and answer-level measurements twice with seed 42. The captured scores below used the 25-question synthetic set in eval/golden.jsonl; they do not include the eight user-authored questions now documented in eval/human-question-answer-key.md. Those new questions have not been rerun. The answer/source for Q1 and Q4, and exact PDF page/section metadata for several questions, need verification against the indexed documents. Human review of eight synthetic questions also remains to be recorded."),
+              p("The suite records module, retrieval and answer-level measurements twice with seed 42. The captured scores below used the original 25-question evaluation set and do not include the eight human-authored rows appended to eval/golden.jsonl (33 total now). Their answers and sources were checked against official documents and are listed in Appendix H, but they have not been evaluated against the live app: current A/B fixture jobs use synthetic documents and omit most of these sources. The Q&A appendix is therefore a verified answer key, not a claim of measured app accuracy. Human review of eight synthetic questions also remains to be recorded."),
               table([
                   ["Level / metric", "Run 1", "Run 2", "Reading"],
                   ["Embedding paraphrase cosine", "0.7746", "0.7746", "Mean positive-pair similarity."],
@@ -438,7 +441,7 @@ def build():
               p("(e) The hardest paper idea was coupling a changing data lake with a stable test set. We used separate candidate collections and updated labels to expose drift. (f) Kubernetes responsibilities: Job writes vectors, CronJob schedules ingestion, PVC stores data/results/traces, ConfigMap carries thresholds, Deployments serve API/UI, Service routes traffic, StatefulSet preserves Chroma identity and storage, and rollout status/undo controls release."),
               p("Contribution and AI statement", "h2"),
               p("Faizan Ahmed executed the local Kubernetes experiments, captured the submitted evidence and maintained the Assignment 03 branch fixes. Jahanzeb Arfan's Assignment 02 RAHBAR system is the starting point; specific Assignment 03 task allocation was not independently provided. The five local Assignment 03 commits currently visible in the branch are attributed to Faizan Ahmed. AI assistance was used for code and report drafting; the group must review the implementation, metrics and explanations and be prepared to explain them at the demo.", "small"),
-              p("Conclusion: top-k=6 passed its baseline gate and the failed live configuration was rolled back. Batch verification, tracing and drift experiments ran on Kubernetes. Eight human-authored questions and a draft answer key are now present, but their source metadata and two answer details need verification, the suite must be rerun with them, and eight synthetic questions still need a documented human review. Other evidence gaps are a screenshot of the unchanged run, the full namespace inventory, a post-rollback trace screenshot, and per-pod resource peak measurements. Coverage is still below 85%.", "small"),
+              p("Conclusion: top-k=6 passed its baseline gate and the failed live configuration was rolled back. Batch verification, tracing and drift experiments ran on Kubernetes. Eight human-authored questions with source-verified answers are included, but remain unevaluated until their official sources are indexed in the cluster; Q1 correctly requires abstention because the fee is absent from the source. Eight synthetic questions still need a documented human review. Other evidence gaps are a screenshot of the unchanged run, the full namespace inventory, a post-rollback trace screenshot, and per-pod resource peak measurements. Coverage is still below 85%.", "small"),
               p("References: Assignment 03 handout, CS4032 Fall 2026. Xiwei Xu et al., RAGOps: Operating and Managing Retrieval-Augmented Generation Pipelines, arXiv:2506.03401 (2025), https://arxiv.org/abs/2506.03401.", "tiny"),
               PageBreak()]
 
@@ -464,6 +467,24 @@ def build():
     ]
     for code, caption, filename in appendix:
         story.extend(screenshot_page(code, caption, filename))
+
+    # Human-supplied questions and source-verified expected answers.
+    story += [p("Appendix H. Human-authored questions and checked answers", "h1"),
+              p("Question wording was supplied by Faizan Ahmed. Answer keys were checked against the listed official corpus sources. These are not reported as live model results: the current fixture Jobs do not index most of these source files.", "body")]
+    human_qa = [
+        ("1. Duplicate-degree fee (unanswerable in supplied source)", "What is the fee for issuing a duplicate degree?", "The published fee page does not state a duplicate-degree issuance fee. Abstain; do not substitute the separate PKR 2,000 degree-correction fee.", "Fee Structure page, Miscellaneous Fees, p. 1."),
+        ("2. C+ grade points", "How many grade points is a C+ worth in BS programs?", "C+ is worth 2.33 grade points in BBA and BS programs.", "Grading page, Letter grades for BBA & BS programs, p. 1."),
+        ("3. Allowed generative AI uses", "Which uses of generative AI are students allowed?", "Preparatory research, exploring/summarizing concepts, notes, organizing work, presentation ideas, reference formatting, proofreading and self-assessment are allowed subject to course rules. Verify facts; do not submit generated assessment work as your own or upload sensitive/university data to unsupported tools.", "Student Handbook 2026, acceptable uses, PDF pp. 51–52."),
+        ("4. Faculty start-up application review", "Who reviews a faculty member's start-up application before final approval?", "Campus Director recommends and forwards the application to ORIC; ORIC evaluates and recommends it; the Rector makes the final approval decision.", "Faculty Entrepreneurship and Technical Start-ups Policy, section 7, PDF p. 2."),
+        ("5. Graduate-count change, 2019–20 to 2023–24", "How did the number of graduates change between 2019-20 and 2023-24?", "The total rose from 2,410 to 4,016, an increase of 1,606 graduates (undergraduate, master’s and PhD combined).", "Annual Reports 2019–20 PDF p. 20 and 2023–24 PDF p. 19, Graduation Summary."),
+        ("6. Poor grades and admission closure", "My grades have been poor for several terms in a row. Can the university end my admission?", "Yes. CGPA below 2.00 for three consecutive semesters results in automatic admission closure; the warning count may reset if required CGPA is restored after an earlier warning.", "Academic Rules Handbook 2026, warning/probation, PDF p. 24 (printed p. 18)."),
+        ("7. Illness-related absence and final exam", "I was ill and missed many classes. Can I still sit the final exam?", "Attendance requirement is 100%; the HoD may condone up to 20% absence for genuine reasons such as illness. If the requirement is not met, the student is ineligible for the final and receives F/A.", "Academic Rules Handbook 2026, clauses 1.21–1.22, PDF p. 10 (printed p. 4)."),
+        ("8. Bus routes and monthly transport charge (unanswerable)", "What are the university bus routes and the monthly transport charge?", "No supplied source gives bus routes or a monthly transport charge. Abstain.", "No transport document in the supplied corpus."),
+    ]
+    for index, (title, question, answer, source) in enumerate(human_qa):
+        story += [p(title, "h2"), p(f"<b>Question:</b> {question}<br/><b>Expected answer:</b> {answer}<br/><b>Source:</b> {source}", "small")]
+        if index == 3:
+            story.append(PageBreak())
 
     doc = ReportDoc(PDF_PATH)
     doc.build(story)

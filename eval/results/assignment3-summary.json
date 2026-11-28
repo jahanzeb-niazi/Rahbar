@@ -194,6 +194,12 @@
     "live_queries": 40,
     "new_questions_added": 6
   },
+  "golden_set": {
+    "total_questions": 33,
+    "human_authored_questions": 8,
+    "human_rows_evaluated": false,
+    "note": "The eight user-authored rows are source-verified but not rerun; current Kubernetes A/B fixture batches do not index most official source documents used by these questions."
+  },
   "verification_batch_b": {
     "documents_seen": 15,
     "indexed": 8,
@@ -218,7 +224,7 @@
     "No screenshot of kubectl get all,pvc,configmap,cronjob,job; provided status screenshot shows deployments and pods.",
     "No post-rollback trace screenshot; trace JSONL is retained, and rollback status is shown separately.",
     "No measured per-pod resource peak during Job execution; report lists configured requests/limits and one Docker host snapshot.",
-    "Eight user-authored questions and draft answers are recorded in eval/human-question-answer-key.md, but they have not yet been included in a rerun of the evaluation suite; Q1 and Q4 answer/source details and several PDF page/section keys still need source verification.",
+    "Eight user-authored questions and source-verified answers are in eval/golden.jsonl and eval/human-question-answer-key.md, but they have not been evaluated; the current fixture batches omit most official source documents. Q1 is scored as unanswerable because the fee page does not state a duplicate-degree fee.",
     "Human review of eight synthetic golden questions is still not recorded in the checklist.",
     "Coverage improved but remained below the configured 85 percent target."
   ]
