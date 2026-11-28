@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: rahbar
+spec:
+  selector:
+    matchLabels:
+      traffic: live
+  template:
+    metadata:
+      labels:
+        traffic: live
+    spec:
+      securityContext:
+        fsGroup: 10001
+      containers:
+        - name: api
+          env:
+            - name: RAGOPS_TRACES
+              value: /lake/traces
+          volumeMounts:
+            - name: ragops
+              mountPath: /lake
+      volumes:
+        - name: ragops
+          persistentVolumeClaim:
+            claimName: ragops

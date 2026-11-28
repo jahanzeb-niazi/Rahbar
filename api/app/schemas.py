@@ -21,6 +21,8 @@ class Passage(BaseModel):
     """One retrieved chunk, as the retriever hands it to the generator."""
 
     chunk_id: str
+    doc_id: str = ""
+    doc_version: str = "unknown"
     text: str
     source: str
     section: str

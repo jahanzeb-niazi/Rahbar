@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "project": "RAHBAR Assignment 03 RAGOps",
+    "date": "2026-11-28",
+    "cluster": "Minikube v1.37.0 on Docker Desktop, Kubernetes v1.36.1 client",
+    "llm": "llama3.2:3b via Ollama 0.40.18",
+    "embedding_model": "nomic-embed-text",
+    "provenance": "Values transcribed from the captured Kubernetes Job logs and outputs; raw timestamped Job result JSON remained on the cluster PVC."
+  },
+  "baseline": {
+    "paraphrase_cosine": 0.7746,
+    "unrelated_cosine": 0.5357,
+    "cosine_gap": 0.2389,
+    "embedding_seconds_per_text": [
+      0.0458,
+      0.069
+    ],
+    "embedding_max_difference": 0.0,
+    "recall_at_3": [
+      0.95,
+      0.95
+    ],
+    "recall_at_5": [
+      1.0,
+      1.0
+    ],
+    "mrr": [
+      0.9625,
+      0.9625
+    ],
+    "noisy_mrr": [
+      0.96,
+      0.96
+    ],
+    "ndcg_at_5": [
+      0.9715,
+      0.9715
+    ],
+    "noisy_ndcg_at_5": [
+      0.9693,
+      0.9693
+    ],
+    "faithfulness_proxy": [
+      0.65,
+      0.65
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ],
+    "latency_p50_seconds": [
+      15.5027,
+      13.2613
+    ],
+    "latency_p95_seconds": [
+      38.1216,
+      34.601
+    ]
+  },
+  "candidate_top_k_6": {
+    "recall_at_3": [
+      0.95,
+      0.95
+    ],
+    "recall_at_5": [
+      1.0,
+      1.0
+    ],
+    "mrr": [
+      0.9625,
+      0.9625
+    ],
+    "ndcg_at_5": [
+      0.9715,
+      0.9715
+    ],
+    "faithfulness_proxy": [
+      0.65,
+      0.65
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ],
+    "latency_p50_seconds": [
+      11.5763,
+      12.7173
+    ],
+    "latency_p95_seconds": [
+      30.8577,
+      31.2957
+    ],
+    "gate": "pass"
+  },
+  "negative_control_top_k_1": {
+    "recall_at_3": [
+      0.9,
+      0.9
+    ],
+    "recall_at_5": [
+      0.9,
+      0.9
+    ],
+    "faithfulness_proxy": [
+      0.7,
+      0.7
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ],
+    "latency_p95_seconds": [
+      15.5386,
+      15.7648
+    ],
+    "gate": "fail: recall_at_5 drop 0.10 exceeded 0.02"
+  },
+  "drift_same_golden": {
+    "recall_at_3": [
+      0.4,
+      0.4
+    ],
+    "recall_at_5": [
+      0.4,
+      0.4
+    ],
+    "mrr": [
+      0.4,
+      0.4
+    ],
+    "ndcg_at_5": [
+      0.4,
+      0.4
+    ],
+    "faithfulness_proxy": [
+      0.35,
+      0.35
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ]
+  },
+  "drift_updated_golden": {
+    "recall_at_3": [
+      0.9524,
+      0.9524
+    ],
+    "recall_at_5": [
+      1.0,
+      1.0
+    ],
+    "mrr": [
+      0.9643,
+      0.9643
+    ],
+    "ndcg_at_5": [
+      0.9729,
+      0.9729
+    ],
+    "faithfulness_proxy": [
+      0.6667,
+      0.6667
+    ],
+    "abstention_correctness": [
+      1.0,
+      1.0
+    ],
+    "citation_validity": [
+      1.0,
+      1.0
+    ]
+  },
+  "coverage": {
+    "before_percent": 47.5,
+    "after_percent": 62.5,
+    "threshold_percent": 85.0,
+    "live_queries": 40,
+    "new_questions_added": 6
+  },
+  "golden_set": {
+    "total_questions": 33,
+    "human_authored_questions": 8,
+    "human_rows_evaluated": false,
+    "note": "The eight user-authored rows are source-verified but not rerun; current Kubernetes A/B fixture batches do not index most official source documents used by these questions."
+  },
+  "namespace_inventory": {
+    "source": "User-provided kubectl -n rahbar get deployments,pods,services,jobs,cronjobs,pvc,configmaps,hpa output",
+    "deployments_ready": {
+      "api": "3/3",
+      "api-candidate": "1/1",
+      "redis": "1/1",
+      "ui": "1/1"
+    },
+    "pods": {
+      "total": 18,
+      "running_ready": 7,
+      "completed": 7,
+      "error": 4
+    },
+    "services": 5,
+    "bound_pvcs": 3,
+    "configmaps": 4,
+    "cronjobs": {
+      "ragops-ingest": "active",
+      "reindex": "suspended"
+    },
+    "hpa_api": {
+      "current_cpu": "4%",
+      "target_cpu": "70%",
+      "min_replicas": 3,
+      "max_replicas": 8,
+      "replicas": 3
+    },
+    "screenshot_received": true
+  },
+  "resource_snapshot": {
+    "source": "kubectl top pods -n rahbar --containers; kubectl top nodes",
+    "pod_samples": {
+      "api": [
+        "3m/76Mi",
+        "4m/81Mi",
+        "4m/80Mi"
+      ],
+      "api-candidate": "4m/72Mi",
+      "chroma": "2m/76Mi",
+      "redis": "12m/6Mi",
+      "ui": "1m/2Mi"
+    },
+    "node": {
+      "cpu": "315m",
+      "cpu_percent": 2,
+      "memory": "1942Mi",
+      "memory_percent": 25
+    },
+    "kind": "point-in-time; not a Job peak"
+  },
+  "verification_batch_b": {
+    "documents_seen": 15,
+    "indexed": 8,
+    "archived": 2,
+    "quarantined": 5,
+    "chunks_embedded": 10,
+    "verification_embeddings": 8,
+    "quarantine_reasons": {
+      "exact_duplicates": 2,
+      "near_duplicate": 1,
+      "truncated_incomplete": 1,
+      "missing_title": 1
+    }
+  },
+  "incremental_update": {
+    "unchanged_batch_a_chunks_embedded": 0,
+    "deleted_fees_chunks_remaining": 0,
+    "restore_2026_chunks_embedded": 3
+  },
+  "evidence_gaps": [
+    "No screenshot of the unchanged Batch A repeat; result was previously shared in chat.",
+    "Full namespace inventory is shown in Appendix F4; the HPA row is near the screenshot's bottom edge, and its full output was also supplied as terminal text.",
+    "No post-rollback trace screenshot; trace JSONL is retained, and rollback status is shown separately.",
+    "Per-container kubectl top snapshot is captured in Appendix F2 (API 76\u201381 MiB, candidate 72 MiB, Chroma 76 MiB, Redis 6 MiB, UI 2 MiB; node 315m CPU/1942Mi memory). It is point-in-time, not a peak during Job execution.",
+    "Eight user-authored questions and source-verified answers are in eval/golden.jsonl and eval/human-question-answer-key.md, but they have not been evaluated; the current fixture batches omit most official source documents. Q1 is scored as unanswerable because the fee page does not state a duplicate-degree fee.",
+    "Human review of eight synthetic golden questions is still not recorded in the checklist.",
+    "Coverage improved but remained below the configured 85 percent target."
+  ]
+}

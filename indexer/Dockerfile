@@ -27,6 +27,7 @@ COPY indexer/pipeline ./pipeline
 COPY corpus/fetch.py corpus/sources.yaml corpus/MANIFEST.md ./corpus/
 # The CI fixture corpus (our own fictional documents) for the e2e-eval job.
 COPY eval/fixtures ./fixtures
+COPY eval ./eval
 
 RUN useradd --uid 10001 --no-create-home --shell /usr/sbin/nologin rahbar
 USER 10001

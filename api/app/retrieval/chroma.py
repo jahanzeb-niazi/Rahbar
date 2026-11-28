@@ -100,8 +100,9 @@ class ChromaRetriever:
         r.raise_for_status()
         return [float(x) for x in r.json()["embeddings"][0]]
 
-    def retrieve(self, question: str, k: int, vector: list[float] | None = None) -> list[Passage]:
-        collection = self._collection()
+    def retrieve(self, question: str, k: int, vector: list[float] | None = None, *,
+                 generation: str | None = None) -> list[Passage]:
+        collection = self.client.get_collection(generation) if generation else self._collection()
         problem = pin_mismatch(collection.metadata or {}, self.settings.embed_model)
         if problem:
             raise PinMismatchError(problem)
@@ -121,6 +122,8 @@ class ChromaRetriever:
             page = meta.get("page")
             passages.append(Passage(
                 chunk_id=cid, text=text or "", source=str(meta.get("source", "")),
+                doc_id=str(meta.get("doc_id", meta.get("source", ""))),
+                doc_version=str(meta.get("doc_version", "unknown")),
                 section=str(meta.get("section", "")),
                 page=int(page) if isinstance(page, (int, float)) else None,
                 score=round(1.0 - float(dist), 4),     # cosine distance -> similarity

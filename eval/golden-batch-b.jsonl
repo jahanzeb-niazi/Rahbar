@@ -1,0 +1,26 @@
+{"id":"a1","origin":"synthetic","question":"What percentage of lectures must I attend to sit the final exam?","expect":"85","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"1. Attendance"}]}
+{"id":"a2","origin":"synthetic","question":"What reason can justify extra absences?","expect":"medical","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"1. Attendance"}]}
+{"id":"a3","origin":"synthetic","question":"What grade is recorded when attendance is below minimum?","expect":"FA","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"1. Attendance"}]}
+{"id":"a4","origin":"synthetic","question":"What cumulative GPA triggers academic warning?","expect":"2.00","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"2. Academic warning"}]}
+{"id":"a5","origin":"synthetic","question":"How many consecutive warning semesters lead to dismissal?","expect":"three","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"2. Academic warning"}]}
+{"id":"a6","origin":"synthetic","question":"Which courses can I repeat to improve my CGPA?","expect":"any course","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"3. Repeating a course"}]}
+{"id":"a7","origin":"synthetic","question":"Which attempt counts after repeating a course?","expect":"recent","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"3. Repeating a course"}]}
+{"id":"a8","origin":"synthetic","question":"What is the BS tuition fee per credit hour?","expect":"10,000","relevant":[{"source":"fees-2026.md","page":1,"section":"1. Tuition"}]}
+{"id":"a9","origin":"synthetic","question":"What is the MS tuition fee per credit hour?","expect":"12,500","relevant":[{"source":"fees-2026.md","page":1,"section":"1. Tuition"}]}
+{"id":"a10","origin":"synthetic","question":"What does late registration cost?","expect":"3,000","relevant":[{"source":"fees-2026.md","page":1,"section":"2. Other charges"}]}
+{"id":"a11","origin":"synthetic","question":"What does a transcript copy cost?","expect":"1,500","relevant":[{"source":"fees-2026.md","page":1,"section":"2. Other charges"}]}
+{"id":"a12","origin":"synthetic","question":"How much does a campus transfer cost?","expect":"5,000","relevant":[{"source":"fees-2026.md","page":1,"section":"2. Other charges"}]}
+{"id":"a13","origin":"synthetic","question":"What tuition refund applies if I drop a course on day seven?","expect":"full","relevant":[{"source":"fees-2026.md","page":1,"section":"3. Refunds"}]}
+{"id":"a14","origin":"synthetic","question":"What tuition refund applies if I drop a course on day fifteen?","expect":"50","relevant":[{"source":"fees-2026.md","page":1,"section":"3. Refunds"}]}
+{"id":"a15","origin":"synthetic","question":"What tuition refund applies if I drop a course after day twenty?","expect":"no refund","relevant":[{"source":"fees-2026.md","page":1,"section":"3. Refunds"}]}
+{"id":"u1","origin":"synthetic","question":"Can I access a laboratory on Sunday?","must_abstain":true}
+{"id":"u2","origin":"synthetic","question":"What hours does the campus bookstore open?","must_abstain":true}
+{"id":"u3","origin":"synthetic","question":"Where can I borrow a laptop?","must_abstain":true}
+{"id":"u4","origin":"synthetic","question":"What is the gym membership fee?","must_abstain":true}
+{"id":"u5","origin":"synthetic","question":"How do I apply for a parking permit?","must_abstain":true}
+{"id":"h1","origin":"synthetic","hard":true,"question":"How many lectures do I need to show up for before taking finals?","expect":"85","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"1. Attendance"}]}
+{"id":"h2","origin":"synthetic","hard":true,"question":"Can a doctor's documentation excuse absences beyond the allowance?","expect":"medical","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"1. Attendance"}]}
+{"id":"h3","origin":"synthetic","hard":true,"question":"What appears on my record if I skipped too many classes?","expect":"FA","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"1. Attendance"}]}
+{"id":"h4","origin":"synthetic","hard":true,"question":"What CGPA triggers a warning, and can the same student repeat a passed course to improve it?","expect":"2.00","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"2. Academic warning"},{"page":1,"source":"academic-rules-2027.md","section":"3. Repeating a course"}]}
+{"id":"h5","origin":"synthetic","hard":true,"question":"How many consecutive terms on academic warning lead to dismissal, and what attendance is needed to sit finals?","expect":"three","relevant":[{"source":"academic-rules-2027.md","page":1,"section":"2. Academic warning"},{"page":1,"source":"academic-rules-2027.md","section":"1. Attendance"}]}
+{"id":"hb1","origin":"synthetic","hard":true,"question":"If I need to check in for orientation, when should I arrive and where should I go?","expect":"nine","relevant":[{"source":"orientation.md","page":1,"section":"Orientation check-in"}]}
